@@ -1,11 +1,6 @@
-/* This js file will not work until all line breaks are removed from any function elements below. Complete code for each function must appear on only one line. (Is this correct?) */
-
-/* MINIFIER will minify this js file: Alt-Ctrl-Shift-M */
 /* This file assumes that cpModals.min.js has already been loaded */
 
-setTimeout(function() { $('#autoPayModal').modal('hide'); }, 4000);
-
-glyder_check = function(vendor_id, item_id, that) {
+function glyder_check(vendor_id, item_id, that) {
 	if (localStorage) {
 		console.log(localStorage);
 		localStorage.setItem("current_vendor_id", vendor_id);
@@ -19,12 +14,12 @@ glyder_check = function(vendor_id, item_id, that) {
 	} else {
 		alert ('Please use an HTML5 compatible browser that supports localStorage.');
 	}
-};
+}
 
 function glyder_check_subscription(user_id, vendor_id) {
 	var valid_until = localStorage[user_id+'_'+vendor_id];
 	return (valid_until && valid_until != "0");
-
+}
 
 function glyder_check_item_purchased(user_id, vendor_id, item_id) {
 	var valid_until = localStorage[user_id+'_'+vendor_id+'_'+item_id];
