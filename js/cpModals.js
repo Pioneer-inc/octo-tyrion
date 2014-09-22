@@ -37,7 +37,7 @@ function loadModals() { document.write('
 						</div> <?php // /cell-1 ?> 
 						<div id="access-cell-2">
 							<div>
-								<button type="button" class="btn standard-button btn-primary" onclick="glyderShowItem();"><div id="div_item_cost">0.10</div></button>
+								<button type="button" class="btn standard-button btn-primary" onclick="glyderBuyItemAndGo();"><div id="div_item_cost">$0.10</div></button>
 							</div>
 						</div> <?php // /cell-2 ?> 
 					</div> <?php // /row 1 ?> 
@@ -60,7 +60,7 @@ function loadModals() { document.write('
 							</div> <?php // /cell-1 ?> 
 							<div id="access-cell-2">
 								<div>
-									<button type="button" class="btn standard-button btn-primary">$1.00</button>
+									<button type="button" class="btn standard-button btn-primary" onclick="glyderBuyDaypassAndGo();""><div id="div_daypass_cost">$1.00</div></button>
 								</div>
 							</div> <?php // /cell-2 ?> 
 						</div> <?php // /row 2 ?> 
