@@ -7,7 +7,16 @@ function glyder_check(vendor_id, item_id, that) {
 		localStorage.setItem("current_item_id", item_id);
 		if (localStorage["glyder_login"] && localStorage["glyder_login"] != "") {
 			// Check if user already has access to the item....
-			showBuyItem();
+			var user_id = localStorage["glyder_login"];
+			if (glyder_check_subscription(user_id, vendor_id)) {
+				$('#div_access_message').html('Your account includes access to this premium content.');
+				$("#prePaidModal").modal("show");
+			} else if (glyder_check_item_purchased(user_id, vendor_id, item_id)) {
+				$('#div_access_message').html('You previously bought this item.&nbsp; It&#39;s&nbsp;yours.');				
+				$("#prePaidModal").modal("show");
+			} else {
+				showBuyItem();
+			}
 	    } else {
 	        showLoginPage();
 	    }
@@ -42,7 +51,7 @@ function glyder_authorize(vendor_id, item_id, that) {
 	}
 };
 
-showBuyItem = function() {
+function showBuyItem() {
 	// alert('show buy modal vendor:' + vendor_id + ' item: ' + item_id + ' user:' + user_id);
 	// Get the cost and day pass cost of the item using ajax
 	var item_cost = 0.15;
@@ -52,18 +61,18 @@ showBuyItem = function() {
 	$("#accessModal").modal("show");
 };
 
-showLoginPage = function() {
+function showLoginPage() {
 	//alert('show login modal vendor:' + vendor_id + ' item: ' + item_id);
 	$("#loginModal").modal("show");
 };
 
-glyderSignUp = function() {
+function glyderSignUp() {
 	//alert('show login modal vendor:' + vendor_id + ' item: ' + item_id);
 	$("#loginModal").modal("hide");
 	$("#signupModal").modal("show");
 };
 
-glyderLogin = function() {
+function glyderLogin() {
 	var username =  $("#loginUsername").val();
 	var password = $("#loginPassword").val();
 	switch (username) {
@@ -99,6 +108,7 @@ function glyderLogout() {
 		localStorage.setItem("glyder_login", "");
 	}
 	$("#accessModal").modal("hide");
+	$("#prePaidModal").modal("hide");
 }
 
 function glyderBuyItem() {
@@ -107,8 +117,8 @@ function glyderBuyItem() {
 }
 
 function glyderBuyItemAndGo() {
+	glyderBuyItem();
 	alert ('Redirect page to the URL for item_id ' + localStorage["current_item_id"]);
-	$("#accessModal").modal("hide");
 }
 
 function glyderBuyDaypass() {

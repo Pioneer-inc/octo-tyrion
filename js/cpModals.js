@@ -410,9 +410,7 @@ function loadModals() { document.write('
 						<div id="access-row"> <?php // start row 1 ?> 
 							<div id="access-cell-1-center">
 								<div class="vertical-align-middle">
-									<p>You previously bought this item.&nbsp; It&#39;s&nbsp;yours.</p>
-									<p>Your account includes access to this premium content.</p>
-									<p>Your account includes <strong>free&nbsp;access</strong> to this premium content.</p>
+									<p><div id="div_access_message">Your account includes <strong>free&nbsp;access</strong> to this premium content.</div></p>
 								</div>
 							</div> <?php // /cell-1 ?> 
 						</div> <?php // /row 1 ?> 
@@ -427,7 +425,7 @@ function loadModals() { document.write('
 			<div class="modal-footer"><?php // start MODAL FOOTER here ?> 
 				<div> <?php // start footer div ?> 
 					<div style="background-size: cover; display: inline-block;"><a href="#"><img class="resize-glyder-icon-footer" src="images/glyder-icon-sm.jpg"></div>&nbsp;&nbsp;<span class="vertical-align-middle">Glyder&nbsp;Powered</a>
-					<div style="display: inline-block; float: right;"> <?php // start forgot pw div ?> <a href="#">My&nbsp;Account</a></span>
+					<div style="display: inline-block; float: right;"> <?php // start forgot pw div ?> <a href="#">My&nbsp;Account</a>&nbsp;|&nbsp;<a href="#" onclick="glyderLogout();">Logout</a></span>
 					</div> <?php // /forgot pw ?> 
 				</div> <?php // /footer div ?> 
 			</div> <?php // /modal-footer ?> 
