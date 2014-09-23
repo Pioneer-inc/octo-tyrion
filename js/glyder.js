@@ -1,6 +1,6 @@
 /* This file assumes that cpModals.min.js has already been loaded */
 
-function glyder_check(vendor_id, item_id, that) {
+function glyder_check(vendor_id, item_id) {
 	if (localStorage) {
 		console.log(localStorage);
 		localStorage.setItem("current_vendor_id", vendor_id);
@@ -35,7 +35,7 @@ function glyder_check_item_purchased(user_id, vendor_id, item_id) {
 	return (valid_until && valid_until != "0");
 }
 
-function glyder_authorize(vendor_id, item_id, that) {
+function glyder_authorize(vendor_id, item_id) {
 	if (localStorage) {
 		console.log(localStorage);
 		localStorage.setItem("current_vendor_id", vendor_id);
@@ -90,7 +90,7 @@ function glyderLogin() {
 			if (localStorage) {
 				localStorage.setItem("glyder_login", username);
 				$("#loginModal").modal("hide");
-				showBuyItem();
+				glyder_check(localStorage["current_vendor_id"], localStorage["current_item_id"]);
 			}
 			return true;
 		default:
