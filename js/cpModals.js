@@ -15,9 +15,9 @@ function loadModals() { document.write('
 		<div class="modal-header"> <?php // start MODAL HEADER ?> 
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<div style="background-size: cover;">
-					<img class="resize-logo-modal-header" src="images/cp/cp-logo.png">
-					<img class="resize-logo-modal-header" src="images/bullet.png">
-					<img class="resize-logo-modal-header" src="images/access.png">
+					<img class="resize-logo-modal-header" src="http://glyder.com/poc/images/cp/cp-logo.png">
+					<img class="resize-logo-modal-header" src="http://glyder.com/poc/images/bullet.png">
+					<img class="resize-logo-modal-header" src="http://glyder.com/poc/images/access.png">
 				</div>
 		</div> <?php // end modal header ?> 
 
@@ -97,7 +97,7 @@ function loadModals() { document.write('
 
 			<div class="modal-footer"><?php // start MODAL FOOTER here ?> 
 				<div> <?php // start footer div ?> 
-					<div style="background-size: cover; display: inline-block;"><a href="#"><img class="resize-glyder-icon-footer" src="images/glyder-icon-sm.jpg"></div>&nbsp;&nbsp;<span class="vertical-align-middle">Glyder&nbsp;Powered</a>
+					<div style="background-size: cover; display: inline-block;"><a href="#"><img class="resize-glyder-icon-footer" src="http://glyder.com/poc/images/glyder-icon-sm.jpg"></div>&nbsp;&nbsp;<span class="vertical-align-middle">Glyder&nbsp;Powered</a>
 					<div style="display: inline-block; float: right;"> <?php // start forgot pw div ?> <a href="#">My&nbsp;Account</a>&nbsp;|&nbsp;<a href="#" onclick="glyderLogout();">Logout</a></span>
 					</div> <?php // /forgot pw ?> 
 				</div> <?php // /footer div ?> 
@@ -117,9 +117,9 @@ function loadModals() { document.write('
 		<div class="modal-header"> <?php // start MODAL HEADER ?> 
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			<div style="background-size: cover;">
-				<img class="resize-logo-modal-header" src="images/cp/cp-logo.png">
-				<img class="resize-logo-modal-header" src="images/bullet.png">
-				<img class="resize-logo-modal-header" src="images/login.png">
+				<img class="resize-logo-modal-header" src="http://glyder.com/poc/images/cp/cp-logo.png">
+				<img class="resize-logo-modal-header" src="http://glyder.com/poc/images/bullet.png">
+				<img class="resize-logo-modal-header" src="http://glyder.com/poc/images/login.png">
 			</div>
 		</div> <?php // end modal header ?> 
 
@@ -134,7 +134,7 @@ function loadModals() { document.write('
 			<div class="pod1 podfr brdr brdr-r brdr-b brdr-l"> <?php // start pod1 here ?> 
 
 					<div class="social-icon-container">
-					<a href="#"><img class="resize-social-icon" src="images/icon-facebook.73x73.jpg"></a>&nbsp;&nbsp;<a href="#"><img class="resize-social-icon" src="images/icon-twitter.73x73.jpg"></a>&nbsp;&nbsp;<a href="#"><img class="resize-social-icon" src="images/icon-linkedin.73x73.jpg"></a>&nbsp;&nbsp;<a href="#"><img class="resize-social-icon" src="images/icon-google.73x73.jpg"></a>&nbsp;&nbsp;<a href="#"><img class="resize-social-icon" src="images/icon-glyder.73x73.jpg"></a></div>
+					<a href="#"><img class="resize-social-icon" src="http://glyder.com/poc/images/icon-facebook.73x73.jpg"></a>&nbsp;&nbsp;<a href="#"><img class="resize-social-icon" src="http://glyder.com/poc/images/icon-twitter.73x73.jpg"></a>&nbsp;&nbsp;<a href="#"><img class="resize-social-icon" src="http://glyder.com/poc/images/icon-linkedin.73x73.jpg"></a>&nbsp;&nbsp;<a href="#"><img class="resize-social-icon" src="http://glyder.com/poc/images/icon-google.73x73.jpg"></a>&nbsp;&nbsp;<a href="#"><img class="resize-social-icon" src="http://glyder.com/poc/images/icon-glyder.73x73.jpg"></a></div>
 
 			<div style="clear: both;"></div> <?php // clear any floats above ?> 
 			</div> <?php // end pod1 ?> 
@@ -185,7 +185,7 @@ function loadModals() { document.write('
 
 			<div class="modal-footer"><?php // start MODAL FOOTER here ?> 
 				<div> <?php // start footer div ?> 
-					<div style="background-size: cover; display: inline-block;"><a href="#"><img class="resize-glyder-icon-footer" src="images/glyder-icon-sm.jpg"></div>&nbsp;&nbsp;<span class="vertical-align-middle">Glyder&nbsp;Powered</a>
+					<div style="background-size: cover; display: inline-block;"><a href="#"><img class="resize-glyder-icon-footer" src="http://glyder.com/poc/images/glyder-icon-sm.jpg"></div>&nbsp;&nbsp;<span class="vertical-align-middle">Glyder&nbsp;Powered</a>
 					<div style="display: inline-block; float: right; vertical-align: middle;"> <?php // start forgot pw div ?> <a href="#">Forgot&nbsp;Password?</a></span>
 					</div> <?php // /forgot pw ?> 
 				</div> <?php // /footer div ?> 
@@ -205,9 +205,9 @@ function loadModals() { document.write('
 		<div class="modal-header"> <?php // start MODAL HEADER ?> 
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			<div style="background-size: cover;">
-				<img class="resize-logo-modal-header" src="images/cp/cp-logo.png">
-				<img class="resize-logo-modal-header" src="images/bullet.png">
-				<img class="resize-logo-modal-header" src="images/signup.png">
+				<img class="resize-logo-modal-header" src="http://glyder.com/poc/images/cp/cp-logo.png">
+				<img class="resize-logo-modal-header" src="http://glyder.com/poc/images/bullet.png">
+				<img class="resize-logo-modal-header" src="http://glyder.com/poc/images/signup.png">
 			</div>
 		</div> <?php // end modal header ?> 
 
@@ -223,7 +223,7 @@ function loadModals() { document.write('
 			<div class="pod1 podfr brdr brdr-r brdr-b brdr-l"> <?php // start pod1 here ?> 
 
 					<div class="social-icon-container">
-					<a href="#"><img class="resize-social-icon" src="images/icon-facebook.73x73.jpg"></a>&nbsp;&nbsp;<a href="#"><img class="resize-social-icon" src="images/icon-twitter.73x73.jpg"></a>&nbsp;&nbsp;<a href="#"><img class="resize-social-icon" src="images/icon-linkedin.73x73.jpg"></a>&nbsp;&nbsp;<a href="#"><img class="resize-social-icon" src="images/icon-google.73x73.jpg"></a>&nbsp;&nbsp;<a href="#"><img class="resize-social-icon" src="images/icon-glyder.73x73.jpg"></a></div>
+					<a href="#"><img class="resize-social-icon" src="http://glyder.com/poc/images/icon-facebook.73x73.jpg"></a>&nbsp;&nbsp;<a href="#"><img class="resize-social-icon" src="http://glyder.com/poc/images/icon-twitter.73x73.jpg"></a>&nbsp;&nbsp;<a href="#"><img class="resize-social-icon" src="http://glyder.com/poc/images/icon-linkedin.73x73.jpg"></a>&nbsp;&nbsp;<a href="#"><img class="resize-social-icon" src="http://glyder.com/poc/images/icon-google.73x73.jpg"></a>&nbsp;&nbsp;<a href="#"><img class="resize-social-icon" src="http://glyder.com/poc/images/icon-glyder.73x73.jpg"></a></div>
 
 			<div style="clear: both;"></div> <?php // clear any floats above ?> 
 			</div> <?php // end pod1 ?> 
@@ -274,7 +274,7 @@ function loadModals() { document.write('
 
 			<div class="modal-footer"><?php // start MODAL FOOTER here ?> 
 				<div> <?php // start footer div ?> 
-					<div style="background-size: cover; display: inline-block;"><a href="#"><img class="resize-glyder-icon-footer" src="images/glyder-icon-sm.jpg"></div>&nbsp;&nbsp;<span class="vertical-align-middle">Glyder&nbsp;Powered</a>
+					<div style="background-size: cover; display: inline-block;"><a href="#"><img class="resize-glyder-icon-footer" src="http://glyder.com/poc/images/glyder-icon-sm.jpg"></div>&nbsp;&nbsp;<span class="vertical-align-middle">Glyder&nbsp;Powered</a>
 					<div style="display: inline-block; float: right; vertical-align: middle;"> <?php // start forgot pw div ?> <a href="#">Forgot&nbsp;Password?</a></span>
 					</div> <?php // /forgot pw ?> 
 				</div> <?php // /footer div ?> 
@@ -294,7 +294,7 @@ function loadModals() { document.write('
 		<div class="modal-header"> <?php // start MODAL HEADER ?> 
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<div style="background-size: cover; text-align:center;">
-					<img class="resize-logo-modal-header" src="images/cp/cp-logo.png">
+					<img class="resize-logo-modal-header" src="http://glyder.com/poc/images/cp/cp-logo.png">
 				</div>
 		</div> <?php // end modal header ?> 
 
@@ -315,7 +315,7 @@ function loadModals() { document.write('
 							<div id="autopay-cell-1">
 
 								<div class="progress-bar-div">
-									<img class="resize-progress-bar-img" src="images/progress-bar.gif">
+									<img class="resize-progress-bar-img" src="http://glyder.com/poc/images/progress-bar.gif">
 								</div>
 
 							</div>
@@ -344,7 +344,7 @@ function loadModals() { document.write('
 
 			<div class="modal-footer"><?php // start MODAL FOOTER here ?> 
 				<div> <?php // start footer div ?> 
-					<div style="background-size: cover; display: inline-block;"><a href="#"><img class="resize-glyder-icon-footer" src="images/glyder-icon-sm.jpg"></div>&nbsp;&nbsp;<span class="vertical-align-middle">Glyder&nbsp;Powered</a>
+					<div style="background-size: cover; display: inline-block;"><a href="#"><img class="resize-glyder-icon-footer" src="http://glyder.com/poc/images/glyder-icon-sm.jpg"></div>&nbsp;&nbsp;<span class="vertical-align-middle">Glyder&nbsp;Powered</a>
 					<div style="display: inline-block; float: right;"> <?php // start forgot pw div ?> <a href="#">My&nbsp;Account</a></span>
 					</div> <?php // /forgot pw ?> 
 				</div> <?php // /footer div ?> 
@@ -364,7 +364,7 @@ function loadModals() { document.write('
 		<div class="modal-header"> <?php // start MODAL HEADER ?> 
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<div style="background-size: cover; text-align:center;">
-					<img class="resize-logo-modal-header" src="images/cp/cp-logo.png">
+					<img class="resize-logo-modal-header" src="http://glyder.com/poc/images/cp/cp-logo.png">
 				</div>
 		</div> <?php // end modal header ?> 
 
@@ -424,7 +424,7 @@ function loadModals() { document.write('
 
 			<div class="modal-footer"><?php // start MODAL FOOTER here ?> 
 				<div> <?php // start footer div ?> 
-					<div style="background-size: cover; display: inline-block;"><a href="#"><img class="resize-glyder-icon-footer" src="images/glyder-icon-sm.jpg"></div>&nbsp;&nbsp;<span class="vertical-align-middle">Glyder&nbsp;Powered</a>
+					<div style="background-size: cover; display: inline-block;"><a href="#"><img class="resize-glyder-icon-footer" src="http://glyder.com/poc/images/glyder-icon-sm.jpg"></div>&nbsp;&nbsp;<span class="vertical-align-middle">Glyder&nbsp;Powered</a>
 					<div style="display: inline-block; float: right;"> <?php // start forgot pw div ?> <a href="#">My&nbsp;Account</a>&nbsp;|&nbsp;<a href="#" onclick="glyderLogout();">Logout</a></span>
 					</div> <?php // /forgot pw ?> 
 				</div> <?php // /footer div ?> 
