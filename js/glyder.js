@@ -1,13 +1,14 @@
 /* This file assumes that cpModals.min.js has already been loaded */
 
 function glyder_check(vendor_id, item_id) {
+	var user_id;
 	if (localStorage) {
 		console.log(localStorage);
 		localStorage.setItem("current_vendor_id", vendor_id);
 		localStorage.setItem("current_item_id", item_id);
 		if (localStorage["glyder_login"] && localStorage["glyder_login"] != "") {
 			// Check if user already has access to the item....
-			var user_id = localStorage["glyder_login"];
+			user_id = localStorage["glyder_login"];
 			if (glyder_check_subscription(user_id, vendor_id)) {
 				$('#div_access_message').html('Your account includes access to this premium content.');
 				$("#prePaidModal").modal("show");
@@ -35,20 +36,21 @@ function glyder_check_item_purchased(user_id, vendor_id, item_id) {
 	return (valid_until && valid_until != "0");
 }
 
-function glyder_authorize(vendor_id, item_id) {
+function glyder_authorized(vendor_id, item_id) {
+	var user_id;
+	// TODO: Add check for items not present that do not require Glyder
 	if (localStorage) {
-		console.log(localStorage);
-		localStorage.setItem("current_vendor_id", vendor_id);
-		localStorage.setItem("current_item_id", item_id);
 		if (localStorage["glyder_login"] && localStorage["glyder_login"] != "") {
 			// Check if user already has access to the item....
-			showBuyItem();
-	    } else {
-	        showLoginPage();
-	    }
+			user_id = localStorage["glyder_login"];
+		    if (glyder_check_subscription(user_id, vendor_id)) return true;
+		    if (glyder_check_item_purchased(user_id, vendor_id, item_id)) return true;
+		    // TODO: Add check for zero cost items that still require Glyder login.
+		}
 	} else {
 		alert ('Please use an HTML5 compatible browser that supports localStorage.');
 	}
+	return false;
 };
 
 function showBuyItem() {
@@ -136,3 +138,40 @@ function glyderShowPrepaidItem() {
 	$("#prePaidModal").modal("show");
 	alert ('Redirect page to the URL for item_id ' + localStorage["current_item_id"]);
 }
+
+
+function parseGoogleJson(data)
+{
+    var column_length = data.table.cols.length;
+    if (!column_length || !data.table.rows.length)
+    {
+        return false;
+    }
+    var columns = [],
+        result = [],
+        row_length,
+        value;
+    for (var column_idx in data.table.cols)
+    {
+        columns.push(data.table.cols[column_idx].label);
+    }
+    for (var rows_idx in data.table.rows)
+    {
+        row_length = data.table.rows[rows_idx]['c'].length;
+        if (column_length != row_length)
+        {
+            // Houston, we have a problem!
+            return false;
+        }
+        for (var row_idx in data.table.rows[rows_idx]['c'])
+        {
+            if (!result[rows_idx])
+            {
+                result[rows_idx] = {};
+            }
+            value = !!data.table.rows[rows_idx]['c'][row_idx].v ? data.table.rows[rows_idx]['c'][row_idx].v : null;
+            result[rows_idx][columns[row_idx]] = value;
+        }
+    }
+    return result;
+};

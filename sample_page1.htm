@@ -27,7 +27,6 @@
 		<script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
-
 </head>
 
 <body>
@@ -90,7 +89,7 @@
 	<!-- Bootstrap script must only load AFTER jQuery script -->
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<!-- Bootstrap script must only load AFTER jQuery script -->
-		<script type="text/javascript" src="js/jquery.sheetrock.min.js"></script>		
+		<script type="text/javascript" src="js/jquery.sheetrock.js"></script>		
 	<!-- Glyder modals script should probably load last -->
 		<!-- Glyder modals script files will probably be custom-named for each individual content provider. For now just calling the js file cpModals.min.js -->
 		<script type="text/javascript" src="js/cpModals.min.js"></script>
@@ -117,6 +116,17 @@
 	$('#statistics').sheetrock({
 	  url: mySpreadsheet
 	});
+
+	// Based on https://coderwall.com/p/duapqq and https://coderwall.com/p/pluhsg
+	// https://docs.google.com/spreadsheets/d/1hs7Bu9Y2hK0Bmai-h4stC5ho-qh61h7QxbFNCOpK2Ro/gviz/tq?tq=select * where B = 'seattle_thymes' and C = 'article1'&tqx=x
+	$.getJSON("https://spreadsheets.google.com/feeds/list/1hs7Bu9Y2hK0Bmai-h4stC5ho-qh61h7QxbFNCOpK2Ro/oq3d84j/public/values?alt=json", 
+	//$.getJSON("http://www.corsproxy.com/docs.google.com/spreadsheets/d/1hs7Bu9Y2hK0Bmai-h4stC5ho-qh61h7QxbFNCOpK2Ro/gviz/tq?tq=select * where B = 'seattle_thymes' and C = 'article1'&tqx=x", 
+	function(data) {
+		//var resultSet = parseGoogleJson(data);
+		console.log(data.feed.entry[0]);
+		//console.log(resultSet);
+	});
+
 	</script>
 	<p>&nbsp;</p>
 
