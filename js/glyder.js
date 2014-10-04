@@ -1,20 +1,21 @@
 /* This file assumes that cpModals.min.js has already been loaded */
 
-function glyder_check(vendor_id, item_id) {
+function glyder_check(vendor_id, item_id, item_href) {
 	var user_id;
 	if (localStorage) {
 		console.log(localStorage);
 		localStorage.setItem("current_vendor_id", vendor_id);
 		localStorage.setItem("current_item_id", item_id);
+		localStorage.setItem("current_item_href", item_href);
 		if (localStorage["glyder_login"] && localStorage["glyder_login"] != "") {
 			// Check if user already has access to the item....
 			user_id = localStorage["glyder_login"];
 			if (glyder_check_subscription(user_id, vendor_id)) {
 				$('#div_access_message').html('Your account includes access to this premium content.');
-				$("#prePaidModal").modal("show");
+				showPaidModalAndGo();
 			} else if (glyder_check_item_purchased(user_id, vendor_id, item_id)) {
 				$('#div_access_message').html('You previously bought this item.&nbsp; It&#39;s&nbsp;yours.');				
-				$("#prePaidModal").modal("show");
+				showPaidModalAndGo();
 			} else {
 				showBuyItem();
 			}
@@ -24,6 +25,13 @@ function glyder_check(vendor_id, item_id) {
 	} else {
 		alert ('Please use an HTML5 compatible browser that supports localStorage.');
 	}
+}
+
+function showPaidModalAndGo() {
+	var modal = $("#prePaidModal");
+	setTimeout(function(){modal.modal('hide')}, 3000);
+	modal.modal('show');
+	window.location = localStorage["current_item_href"];
 }
 
 function glyder_check_subscription(user_id, vendor_id) {
@@ -120,7 +128,8 @@ function glyderBuyItem() {
 
 function glyderBuyItemAndGo() {
 	glyderBuyItem();
-	alert ('Redirect page to the URL for item_id ' + localStorage["current_item_id"]);
+	//alert ('Redirect page to the URL for item_id ' + localStorage["current_item_id"]);
+	window.location = localStorage["current_item_href"];
 }
 
 function glyderBuyDaypass() {
@@ -130,7 +139,8 @@ function glyderBuyDaypass() {
 
 function glyderBuyDaypassAndGo() {
 	glyderBuyDaypass();
-	alert ('Redirect page to the URL for item_id ' + localStorage["current_item_id"]);
+	//alert ('Redirect page to the URL for item_id ' + localStorage["current_item_id"]);
+	window.location = localStorage["current_item_href"];
 }
 
 function glyderShowPrepaidItem() {

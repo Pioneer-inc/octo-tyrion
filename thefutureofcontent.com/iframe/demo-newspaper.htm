@@ -12,6 +12,7 @@
 
 	<title>Demo - Newspaper</title>
 
+
 	<!-- Link to Google fonts before any css style sheets -->
 		<link rel='stylesheet' id='googlefonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin' type='text/css' media='all' />
 	<!-- Link to jQuery UI css -->
@@ -27,6 +28,24 @@
 		<script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
+<!-- Loading scripts at end so page displays faster -->
+
+	<!-- jQuery script must fully load BEFORE Bootstrap script -->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<!--script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script -->
+	<!-- Bootstrap script must only load AFTER jQuery script -->
+		<script type="text/javascript" src="http://glyder.com/poc/js/bootstrap.min.js"></script>
+	<!-- Glyder modals script should probably load last -->
+		<!-- Glyder modals script files will probably be custom-named for each individual content provider. For now just calling the js file cpModals.min.js -->
+		<script type="text/javascript" src="http://glyder.com/poc/js/cpModals.min.js"></script>
+		<script type="text/javascript" src="http://glyder.com/poc/js/glyder.js"></script>
+
+<!-- End of loading of scripts -->
+
+<!-- This script function loads Glyder modals so they are available for use by anchors or links in the publisher site -->
+	<script type="text/javascript">
+        loadModals();
+    </script>
 
 	<script>
 	function toggle(obj) {
@@ -71,8 +90,8 @@
 <div style="border-style:transparent; border-width:0px; padding:0.75em 1em 0.5em 1em; margin-top:0.75em; margin-bottom:0.5em; background:#FFFAF5">
 <table style="border:0; border-spacing:0; padding:0; border-collapse:collapse; margin-bottom:0; margin-top:0; margin-left:-6px;">
 <tr>
-<td style="line-height:1.75em; text-align:right; vertical-align:middle;">&nbsp;&nbsp;<img src="//images/lock/lock-small.png"/>&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td><div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.75em; line-height:1.75em; vertical-align:middle;"><a href="/iframe/demo-newspaper-item01.htm" onclick="glyder_check('seattle-thymes','item-01',this);">Interesting Article Number 1</a></div>
+<td style="line-height:1.75em; text-align:right; vertical-align:middle;">&nbsp;&nbsp;<img src="/images/lock/lock-small.png"/>&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.75em; line-height:1.75em; vertical-align:middle;"><a href="/iframe/demo-newspaper-item01.htm" onclick="glyder_check('seattle-thymes','item01', '/iframe/demo-newspaper-item01.htm');">Interesting Article 1</a></div>
 <div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.4em; color:#777777; line-height:1.4em;">And It Has an Intriguing Subtitle</div></td>
 </tr>
 </table>
@@ -82,7 +101,7 @@
 <span style="color:#888888; font-size:1em;">Updated Today at 8:47 a.m. ET</span>
 </div>
 <div style="font-size:1em;">
-Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi <span style="color:#777777;">architecto beatae vitae</span> <span style="color:#888888;">dicta sunt, explicabo.</span> <span style="color:#999999;">Nemo enim ipsam voluptatem,</span> <span style="color:#a6a6a6;">quia voluptas sit, aspernatur</span> <span style="color:#b3b3b3;">aut odit aut fugit,</span> <span style="color:#bfbfbf;">sed quia consequuntur magni</span> <span style="color:#cccccc;">dolores eos ... </span><a href="">[more]</a>.
+Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi <span style="color:#777777;">architecto beatae vitae</span> <span style="color:#888888;">dicta sunt, explicabo.</span> <span style="color:#999999;">Nemo enim ipsam voluptatem,</span> <span style="color:#a6a6a6;">quia voluptas sit, aspernatur</span> <span style="color:#b3b3b3;">aut odit aut fugit,</span> <span style="color:#bfbfbf;">sed quia consequuntur magni</span> <span style="color:#cccccc;">dolores eos ... </span><a href="/iframe/demo-newspaper-item01.htm" onclick="glyder_check('seattle-thymes','item01', '/iframe/demo-newspaper-item01.htm');">[more]</a>.
 </div>
 </div>
 
@@ -90,8 +109,8 @@ Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium dolo
 <div style="border-style:transparent; border-width:0px; padding:0.75em 1em 0.5em 1em; margin-top:0.75em; margin-bottom:0.5em; background:#FFFAF5">
 <table style="border:0; border-spacing:0; padding:0; border-collapse:collapse; margin-bottom:0; margin-top:0; margin-left:-6px;">
 <tr>
-<td style="line-height:1.75em; text-align:right; vertical-align:middle;">&nbsp;&nbsp;<img src="//images/lock/lock-small.png"/>&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td><div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.75em; line-height:1.75em; vertical-align:middle;"><a href="/iframe/demo-newspaper-item02.htm" onclick="glyder_check('seattle-thymes','item-02',this);">Interesting Article Number 2</a></div>
+<td style="line-height:1.75em; text-align:right; vertical-align:middle;">&nbsp;&nbsp;<img src="/images/lock/lock-small.png"/>&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.75em; line-height:1.75em; vertical-align:middle;"><a href="/iframe/demo-newspaper-item02.htm" onclick="glyder_check('seattle-thymes','item02', '/iframe/demo-newspaper-item02.htm');"">Interesting Article 2</a></div>
 <div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.4em; color:#777777; line-height:1.4em;">And It Has an Intriguing Subtitle</div></td>
 </tr>
 </table>
@@ -101,7 +120,7 @@ Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium dolo
 <span style="color:#888888; font-size:1em;">Updated Today at 8:47 a.m. ET</span>
 </div>
 <div style="font-size:1em;">
-Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi <span style="color:#777777;">architecto beatae vitae</span> <span style="color:#888888;">dicta sunt, explicabo.</span> <span style="color:#999999;">Nemo enim ipsam voluptatem,</span> <span style="color:#a6a6a6;">quia voluptas sit, aspernatur</span> <span style="color:#b3b3b3;">aut odit aut fugit,</span> <span style="color:#bfbfbf;">sed quia consequuntur magni</span> <span style="color:#cccccc;">dolores eos ... </span><a href="">[more]</a>.
+Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi <span style="color:#777777;">architecto beatae vitae</span> <span style="color:#888888;">dicta sunt, explicabo.</span> <span style="color:#999999;">Nemo enim ipsam voluptatem,</span> <span style="color:#a6a6a6;">quia voluptas sit, aspernatur</span> <span style="color:#b3b3b3;">aut odit aut fugit,</span> <span style="color:#bfbfbf;">sed quia consequuntur magni</span> <span style="color:#cccccc;">dolores eos ... </span><a href="/iframe/demo-newspaper-item02.htm" onclick="glyder_check('seattle-thymes','item02', '/iframe/demo-newspaper-item02.htm');">[more]</a>.
 </div>
 </div>
 
