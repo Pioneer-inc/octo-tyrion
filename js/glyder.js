@@ -11,7 +11,7 @@ function glyder_check(vendor_id, item_id, item_href) {
 			// Check if user already has access to the item. If so, send theme there.
 			user_id = localStorage["glyder_login"];
 			if (glyder_check_subscription(user_id, vendor_id) || glyder_check_item_purchased(user_id, vendor_id, item_id)) {
-				if (localStorage["current_item_href"]) {
+				if (localStorage["current_item_href"] != 'undefined') {
 					window.location = localStorage["current_item_href"];
 				}
 			} else {
@@ -35,7 +35,7 @@ function glyderShowPrepaidModal() {
 
 function glyderShowPrepaidItem() {
 	glyderShowPrepaidModal();
-	if (localStorage["current_item_href"]) {
+	if (localStorage["current_item_href"] != 'undefined') {
 		window.location = localStorage["current_item_href"];
 	}
 }
