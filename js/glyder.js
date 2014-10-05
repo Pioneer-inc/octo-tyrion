@@ -8,14 +8,12 @@ function glyder_check(vendor_id, item_id, item_href) {
 		localStorage.setItem("current_item_id", item_id);
 		localStorage.setItem("current_item_href", item_href);
 		if (localStorage["glyder_login"] && localStorage["glyder_login"] != "") {
-			// Check if user already has access to the item....
+			// Check if user already has access to the item. If so, send theme there.
 			user_id = localStorage["glyder_login"];
-			if (glyder_check_subscription(user_id, vendor_id)) {
-				$('#div_access_message').html('Your account includes access to this premium content.');
-				showPaidModalAndGo();
-			} else if (glyder_check_item_purchased(user_id, vendor_id, item_id)) {
-				$('#div_access_message').html('You previously bought this item.&nbsp; It&#39;s&nbsp;yours.');				
-				showPaidModalAndGo();
+			if (glyder_check_subscription(user_id, vendor_id) || glyder_check_item_purchased(user_id, vendor_id, item_id)) {
+				if (localStorage["current_item_href"]) {
+					window.location = localStorage["current_item_href"];
+				}
 			} else {
 				showBuyItem();
 			}
@@ -27,11 +25,19 @@ function glyder_check(vendor_id, item_id, item_href) {
 	}
 }
 
-function showPaidModalAndGo() {
-	var modal = $("#prePaidModal");
-	setTimeout(function(){modal.modal('hide')}, 3000);
-	modal.modal('show');
-	window.location = localStorage["current_item_href"];
+function glyderShowPrepaidModal() {
+	var prePaidModal = $("#prePaidModal");
+	setTimeout(function(){prePaidModal.modal('hide')}, 5000);
+	prePaidModal.modal('show');
+	//$("#prePaidModal").modal('show');
+
+}
+
+function glyderShowPrepaidItem() {
+	glyderShowPrepaidModal();
+	if (localStorage["current_item_href"]) {
+		window.location = localStorage["current_item_href"];
+	}
 }
 
 function glyder_check_subscription(user_id, vendor_id) {
@@ -51,8 +57,16 @@ function glyder_authorized(vendor_id, item_id) {
 		if (localStorage["glyder_login"] && localStorage["glyder_login"] != "") {
 			// Check if user already has access to the item....
 			user_id = localStorage["glyder_login"];
-		    if (glyder_check_subscription(user_id, vendor_id)) return true;
-		    if (glyder_check_item_purchased(user_id, vendor_id, item_id)) return true;
+		    if (glyder_check_subscription(user_id, vendor_id)) {
+				$('#div_access_message').html('Your account includes access to this premium content.');
+		    	glyderShowPrepaidModal(); 
+		    	return true;
+		    }
+		    if (glyder_check_item_purchased(user_id, vendor_id, item_id)) {
+				$('#div_access_message').html('You previously bought this item.&nbsp; It&#39;s&nbsp;yours.');				
+		    	glyderShowPrepaidModal();
+		    	return true;
+		    }
 		    // TODO: Add check for zero cost items that still require Glyder login.
 		}
 	} else {
@@ -142,46 +156,3 @@ function glyderBuyDaypassAndGo() {
 	//alert ('Redirect page to the URL for item_id ' + localStorage["current_item_id"]);
 	window.location = localStorage["current_item_href"];
 }
-
-function glyderShowPrepaidItem() {
-	setPrePaidTimeout();
-	$("#prePaidModal").modal("show");
-	alert ('Redirect page to the URL for item_id ' + localStorage["current_item_id"]);
-}
-
-
-function parseGoogleJson(data)
-{
-    var column_length = data.table.cols.length;
-    if (!column_length || !data.table.rows.length)
-    {
-        return false;
-    }
-    var columns = [],
-        result = [],
-        row_length,
-        value;
-    for (var column_idx in data.table.cols)
-    {
-        columns.push(data.table.cols[column_idx].label);
-    }
-    for (var rows_idx in data.table.rows)
-    {
-        row_length = data.table.rows[rows_idx]['c'].length;
-        if (column_length != row_length)
-        {
-            // Houston, we have a problem!
-            return false;
-        }
-        for (var row_idx in data.table.rows[rows_idx]['c'])
-        {
-            if (!result[rows_idx])
-            {
-                result[rows_idx] = {};
-            }
-            value = !!data.table.rows[rows_idx]['c'][row_idx].v ? data.table.rows[rows_idx]['c'][row_idx].v : null;
-            result[rows_idx][columns[row_idx]] = value;
-        }
-    }
-    return result;
-};
