@@ -1,11 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8"> 
-	<title></title> 
-	<meta name="description" content=""> 
-	<meta name="viewport" content="width=device-width">
+
+	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- This viewport tag can be used to prevent zooming on mobile devices; makes feel like a native app. Not using this at present.
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	-->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<title>Demo - Film Festival</title>
+
+	<!-- Link to Google fonts before any css style sheets -->
+		<link rel='stylesheet' id='googlefonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin' type='text/css' media='all' />
+	<!-- Link to jQuery UI css -->
+		<!--link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css"-->
+	<!-- Link to Bootstrap css -->
+		<link rel="stylesheet" type="text/css" href="http://glyder.com/poc/css/bootstrap.min.css">
+	<!-- Link to Glyder modals css -->
+		<link rel="stylesheet" type="text/css" href="http://glyder.com/poc/css/glyder-modals.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
 
 	<script>
 	function toggle(obj) {
@@ -51,7 +72,7 @@
 <table style="border:0; border-spacing:0; padding:0; border-collapse:collapse; margin-bottom:0; margin-top:0; margin-left:-6px;">
 <tr>
 <td style="line-height:1.75em; text-align:right; vertical-align:middle;">&nbsp;&nbsp;<img src="/images/lock/lock-small.png"/>&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td><div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.75em; line-height:1.75em; vertical-align:middle;"><a href="">This Is an Interesting Article</a></div>
+<td><div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.75em; line-height:1.75em; vertical-align:middle;"><a href="/iframe/demo-film-fest-item01.htm">Interesting Film 1</a></div>
 <div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.4em; color:#777777; line-height:1.4em;">And It Has an Intriguing Subtitle</div></td>
 </tr>
 </table>
@@ -61,7 +82,7 @@
 <span style="color:#888888; font-size:1em;">Updated Today at 8:47 a.m. ET</span>
 </div>
 <div style="font-size:1em;">
-Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi <span style="color:#777777;">architecto beatae vitae</span> <span style="color:#888888;">dicta sunt, explicabo.</span> <span style="color:#999999;">Nemo enim ipsam voluptatem,</span> <span style="color:#a6a6a6;">quia voluptas sit, aspernatur</span> <span style="color:#b3b3b3;">aut odit aut fugit,</span> <span style="color:#bfbfbf;">sed quia consequuntur magni</span> <span style="color:#cccccc;">dolores eos ... </span><a href="">[more]</a>.
+Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi <span style="color:#777777;">architecto beatae vitae</span> <span style="color:#888888;">dicta sunt, explicabo.</span> <span style="color:#999999;">Nemo enim ipsam voluptatem,</span> <span style="color:#a6a6a6;">quia voluptas sit, aspernatur</span> <span style="color:#b3b3b3;">aut odit aut fugit,</span> <span style="color:#bfbfbf;">sed quia consequuntur magni</span> <span style="color:#cccccc;">dolores eos ... </span><a href="/iframe/demo-film-fest-item01.htm">[more]</a>.
 </div>
 </div>
 
@@ -70,7 +91,7 @@ Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium dolo
 <table style="border:0; border-spacing:0; padding:0; border-collapse:collapse; margin-bottom:0; margin-top:0; margin-left:-6px;">
 <tr>
 <td style="line-height:1.75em; text-align:right; vertical-align:middle;">&nbsp;&nbsp;<img src="/images/lock/lock-small.png"/>&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td><div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.75em; line-height:1.75em; vertical-align:middle;"><a href="">This Is an Interesting Article</a></div>
+<td><div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.75em; line-height:1.75em; vertical-align:middle;"><a href="/iframe/demo-film-fest-item02.htm">Interesting Film 2</a></div>
 <div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.4em; color:#777777; line-height:1.4em;">And It Has an Intriguing Subtitle</div></td>
 </tr>
 </table>
@@ -80,16 +101,10 @@ Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium dolo
 <span style="color:#888888; font-size:1em;">Updated Today at 8:47 a.m. ET</span>
 </div>
 <div style="font-size:1em;">
-Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi <span style="color:#777777;">architecto beatae vitae</span> <span style="color:#888888;">dicta sunt, explicabo.</span> <span style="color:#999999;">Nemo enim ipsam voluptatem,</span> <span style="color:#a6a6a6;">quia voluptas sit, aspernatur</span> <span style="color:#b3b3b3;">aut odit aut fugit,</span> <span style="color:#bfbfbf;">sed quia consequuntur magni</span> <span style="color:#cccccc;">dolores eos ... </span><a href="">[more]</a>.
+Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi <span style="color:#777777;">architecto beatae vitae</span> <span style="color:#888888;">dicta sunt, explicabo.</span> <span style="color:#999999;">Nemo enim ipsam voluptatem,</span> <span style="color:#a6a6a6;">quia voluptas sit, aspernatur</span> <span style="color:#b3b3b3;">aut odit aut fugit,</span> <span style="color:#bfbfbf;">sed quia consequuntur magni</span> <span style="color:#cccccc;">dolores eos ... </span><a href="/iframe/demo-film-fest-item01.htm">[more]</a>.
 </div>
 </div>
 
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 

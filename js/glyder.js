@@ -81,7 +81,8 @@ function glyder_authorized(vendor_id, item_id) {
 		    }
 			glyderReadItemData(function() {
 				if (glyder_item_cost < 0.0000001) {
-					glyderShowPrepaidModal();
+					glyderShowPrepaidItem();
+					$('#page_content').show();
 					return true;
 				}
 			});
