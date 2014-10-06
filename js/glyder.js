@@ -1,5 +1,13 @@
 /* This file assumes that cpModals.min.js has already been loaded */
 
+google.load('visualization', '1', { packages: ['table', 'corechart'] });
+var glyder_catalog_gsheet_url = "https://docs.google.com/spreadsheets/d/1hs7Bu9Y2hK0Bmai-h4stC5ho-qh61h7QxbFNCOpK2Ro/edit?usp=sharing";
+var glyder_item_cost = 0.15;
+var glyder_item_redirect_link = "";
+var glyder_day_pass_cost = 1.15;
+
+$('#div_daypass_cost').html('$' + Number(glyder_day_pass_cost).toFixed(2));
+
 function glyder_check(vendor_id, item_id, item_href) {
 	var user_id;
 	if (localStorage) {
@@ -12,10 +20,14 @@ function glyder_check(vendor_id, item_id, item_href) {
 			user_id = localStorage["glyder_login"];
 			if (glyder_check_subscription(user_id, vendor_id) || glyder_check_item_purchased(user_id, vendor_id, item_id)) {
 				if (localStorage["current_item_href"] != 'undefined') {
-					window.location = localStorage["current_item_href"];
+					glyder_vendor_page_redirect(localStorage["current_vendor_id"], localStorage["current_item_id"], localStorage["current_item_href"]);
 				}
 			} else {
-				showBuyItem();
+				glyderReadItemData(function() {
+					if (glyder_item_cost > 0.0000001) {
+						$("#accessModal").modal("show");
+					}
+				});
 			}
 	    } else {
 	        showLoginPage();
@@ -36,7 +48,7 @@ function glyderShowPrepaidModal() {
 function glyderShowPrepaidItem() {
 	glyderShowPrepaidModal();
 	if (localStorage["current_item_href"] != 'undefined') {
-		window.location = localStorage["current_item_href"];
+		glyder_vendor_page_redirect(localStorage["current_vendor_id"], localStorage["current_item_id"], localStorage["current_item_href"]);
 	}
 }
 
@@ -67,7 +79,12 @@ function glyder_authorized(vendor_id, item_id) {
 		    	glyderShowPrepaidModal();
 		    	return true;
 		    }
-		    // TODO: Add check for zero cost items that still require Glyder login.
+			glyderReadItemData(function() {
+				if (glyder_item_cost < 0.0000001) {
+					glyderShowPrepaidModal();
+					return true;
+				}
+			});
 		}
 	} else {
 		alert ('Please use an HTML5 compatible browser that supports localStorage.');
@@ -76,12 +93,10 @@ function glyder_authorized(vendor_id, item_id) {
 };
 
 function showBuyItem() {
-	// alert('show buy modal vendor:' + vendor_id + ' item: ' + item_id + ' user:' + user_id);
-	// Get the cost and day pass cost of the item using ajax
-	var item_cost = 0.15;
-	var day_pass_cost = 1.0;
-	$('#div_item_cost').html('$' + item_cost);
-	$('#div_daypass_cost').html('$' + day_pass_cost);
+	if (glyder_item_cost < 0.0000001) {
+		return;
+	}
+	$('#div_item_cost').html('$' + glyder_item_cost);
 	$("#accessModal").modal("show");
 };
 
@@ -143,7 +158,7 @@ function glyderBuyItem() {
 function glyderBuyItemAndGo() {
 	glyderBuyItem();
 	//alert ('Redirect page to the URL for item_id ' + localStorage["current_item_id"]);
-	window.location = localStorage["current_item_href"];
+	glyder_vendor_page_redirect(localStorage["current_vendor_id"], localStorage["current_item_id"], localStorage["current_item_href"]);
 }
 
 function glyderBuyDaypass() {
@@ -154,5 +169,64 @@ function glyderBuyDaypass() {
 function glyderBuyDaypassAndGo() {
 	glyderBuyDaypass();
 	//alert ('Redirect page to the URL for item_id ' + localStorage["current_item_id"]);
-	window.location = localStorage["current_item_href"];
+	glyder_vendor_page_redirect(localStorage["current_vendor_id"], localStorage["current_item_id"], localStorage["current_item_href"]);
+}
+
+// MOVE THIS FUNCTION TO cpModal for vendor specific code
+function glyder_vendor_page_redirect(vendor_id, item_id, item_href) {
+	if (!jQuery.isEmptyObject(top.frames["myiframe"])) {
+		top.frames["myiframe"].location = item_href;
+	} else {
+		window.location = item_href;
+	}
+}
+
+function glyderReadItemData_Works() {
+	// Reference: https://developers.google.com/fusiontables/docs/samples/gviz_datatable
+	var query = "SELECT 'Scoring Team' as Scoring, " +
+	    "'Receiving Team' as Receiving, 'Minute of goal' as Minute " +
+	    'FROM 1VlPiBCkYt_Vio-JT3UwM-U__APurJvPb6ZEJPg';
+	query += " WHERE 'Scoring Team' = '" + "Germany" + "'";
+	var queryText = encodeURIComponent(query);
+	var gvizQuery = new google.visualization.Query(
+	    'http://www.google.com/fusiontables/gvizdata?tq=' + queryText);
+
+	gvizQuery.send(function(response) {
+	  	var table = response.getDataTable();
+	  	alert (JSON.stringify(table));
+	  });
+}
+
+
+function glyderReadItemData(callback_func) {
+	// Reference: https://developers.google.com/chart/interactive/docs/querylanguage
+	// https://developers.google.com/chart/interactive/docs/reference#dataparam
+	var tq_query = "&tq=select * where";
+	var gvizQuery;
+	var vendor_id = localStorage["current_vendor_id"];
+	var item_id = localStorage["current_item_id"];
+	
+	tq_query += " B = '" + vendor_id + "'";
+	tq_query += " and C = '" + item_id + "'";
+	gvizQuery = new google.visualization.Query(glyder_catalog_gsheet_url + tq_query);
+
+	gvizQuery.send(function(response) {
+		if (response.isError()) {
+		alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+		return;
+		}
+
+	  	var data = response.getDataTable();
+	  	if (data.getNumberOfRows() < 1) {
+	  		alert ("Vendor: " + vendor_id + ", Item: " + item_id + " does not exist in the catalog.");
+	  	} else {
+			glyder_item_cost = data.getValue(0,4);
+			glyder_item_redirect_link = data.getValue(0,5);
+			if (glyder_item_cost < 0.000001) {
+				$('#div_access_message').html('Your account includes <strong>free&nbsp;access</strong> to this premium content.');				
+			}
+			$('#div_item_cost').html('$' + Number(glyder_item_cost).toFixed(2));
+		}
+		callback_func();
+	});
 }
