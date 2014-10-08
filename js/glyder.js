@@ -4,8 +4,23 @@ google.load('visualization', '1', { packages: ['table', 'corechart'] });
 var glyder_catalog_gsheet_url = "https://docs.google.com/spreadsheets/d/1hs7Bu9Y2hK0Bmai-h4stC5ho-qh61h7QxbFNCOpK2Ro/edit?usp=sharing";
 var glyder_item_cost = 0.15;
 var glyder_item_redirect_link = "";
-var glyder_day_pass_cost = 1.15;
 
+// MOVE THESE TWO FUNCTION TO cpModal for vendor specific code
+var glyder_day_pass_cost = 1.15;
+function glyder_vendor_page_redirect(vendor_id, item_id, item_href) {
+	if (!jQuery.isEmptyObject(top.frames["demoframe"])) {
+		top.frames["demoframe"].location = item_href;
+	} else {
+		window.location = item_href;
+	}
+}
+
+function glyder_vendor_page_show(vendor_id, item_id) {
+	// TODO: Might need different behavior for different vendor/item combo
+	$('#page_content').show();
+}
+
+// Call loadModals to load vendor specific dialogs.
 loadModals();
 
 $('#div_daypass_cost').html('$' + Number(glyder_day_pass_cost).toFixed(2));
@@ -39,29 +54,33 @@ function glyder_check(vendor_id, item_id, item_href) {
 
 function glyderShowPrepaidModal() {
 	var prePaidModal = $("#prePaidModal");
-	setTimeout(function(){prePaidModal.modal('hide')}, 5000);
+	setTimeout(function(){prePaidModal.modal('hide')}, 3000);
 	prePaidModal.modal('show');
-	//$("#prePaidModal").modal('show');
-
 }
 
 function glyderShowPrepaidItem() {
 	glyderShowPrepaidModal();
-	if (!jQuery.isEmptyObject(localStorage["current_item_href"]) && localStorage["current_item_href"] != "undefined") {
-		glyder_vendor_page_redirect(localStorage["current_vendor_id"], localStorage["current_item_id"], localStorage["current_item_href"]);
-	}
+	glyder_show_or_redirect()
 }
 
 function glyder_check_subscription(user_id, vendor_id) {
 	var valid_until = localStorage[user_id+'_'+vendor_id];
 	var d = new Date();
 	var n = Math.floor(d.getTime()/1000); // current time
-	return (valid_until && valid_until >= n);
+	if (valid_until && valid_until >= n) {
+		$('#div_access_message').html('Your account includes access to this premium content.');
+		return true;
+	}
+	return false;
 }
 
 function glyder_check_item_purchased(user_id, vendor_id, item_id) {
 	var valid_until = localStorage[user_id+'_'+vendor_id+'_'+item_id];
-	return (valid_until && valid_until != "0");
+	if (valid_until && valid_until != "0") {
+		$('#div_access_message').html('You previously bought this item.&nbsp; It&#39;s&nbsp;yours.');
+		return true;				
+	}
+	return false;
 }
 
 function glyder_authorized(vendor_id, item_id) {
@@ -71,23 +90,10 @@ function glyder_authorized(vendor_id, item_id) {
 		if (localStorage["glyder_login"] && localStorage["glyder_login"] != "") {
 			// Check if user already has access to the item....
 			user_id = localStorage["glyder_login"];
-		    if (glyder_check_subscription(user_id, vendor_id)) {
-				$('#div_access_message').html('Your account includes access to this premium content.');
-		    	glyderShowPrepaidModal(); 
+		    if (glyder_check_subscription(user_id, vendor_id) || glyder_check_item_purchased(user_id, vendor_id, item_id)) {
+		    	glyderShowPrepaidItem();
 		    	return true;
 		    }
-		    if (glyder_check_item_purchased(user_id, vendor_id, item_id)) {
-				$('#div_access_message').html('You previously bought this item.&nbsp; It&#39;s&nbsp;yours.');				
-		    	glyderShowPrepaidModal();
-		    	return true;
-		    }
-			glyderReadItemData(function() {
-				if (glyder_item_cost < 0.0000001) {
-					glyderShowPrepaidItem();
-					$('#page_content').show();
-					return true;
-				}
-			});
 		}
 	} else {
 		alert ('Please use an HTML5 compatible browser that supports localStorage.');
@@ -105,6 +111,7 @@ function showBuyItem() {
 
 function showLoginPage() {
 	//alert('show login modal vendor:' + vendor_id + ' item: ' + item_id);
+	$("#signupModal").modal("hide");
 	$("#loginModal").modal("show");
 };
 
@@ -154,68 +161,39 @@ function glyderLogout() {
 }
 
 function glyderBuyItem() {
+	// TODO: return false if payment process failed
 	localStorage.setItem(localStorage["glyder_login"]+'_'+localStorage["current_vendor_id"]+'_'+localStorage["current_item_id"], "19999999999"); // Epoch Time
 	$("#accessModal").modal("hide");
+	return true;
 }
 
 function glyderBuyItemAndGo() {
-	glyderBuyItem();
-	//alert ('Redirect page to the URL for item_id ' + localStorage["current_item_id"]);
-	glyder_show_or_redirect();
+	if (glyderBuyItem()) glyder_show_or_redirect();
+	else alert("Buy item payment failed.");
 }
 
 function glyderBuyDaypass() {
+	// TODO: return false is payment process failed
 	var d = new Date();
 	var n = Math.round(d.getTime()/1000) + 24*60*60; // validity time in seconds
 	localStorage.setItem(localStorage["glyder_login"]+'_'+localStorage["current_vendor_id"], n); // Epoch Time
 	$("#accessModal").modal("hide");
+	return true;
 }
 
 function glyderBuyDaypassAndGo() {
-	glyderBuyDaypass();
-	//alert ('Redirect page to the URL for item_id ' + localStorage["current_item_id"]);
-	glyder_show_or_redirect();
+	if (glyderBuyDaypass()) glyder_show_or_redirect();
+	else alert("Buy day pass payment failed.");
 }
 
 function glyder_show_or_redirect() {
 	if (!jQuery.isEmptyObject(localStorage["current_item_href"]) && localStorage["current_item_href"] != "undefined") {
 		glyder_vendor_page_redirect(localStorage["current_vendor_id"], localStorage["current_item_id"], localStorage["current_item_href"]);
 	} else {
+		glyderShowPrepaidModal(); 
 		glyder_vendor_page_show(localStorage["current_vendor_id"], localStorage["current_item_id"]);					
 	}
 }
-
-// MOVE THIS FUNCTION TO cpModal for vendor specific code
-function glyder_vendor_page_redirect(vendor_id, item_id, item_href) {
-	if (!jQuery.isEmptyObject(top.frames["myiframe"])) {
-		top.frames["myiframe"].location = item_href;
-	} else {
-		window.location = item_href;
-	}
-}
-
-function glyder_vendor_page_show(vendor_id, item_id) {
-	// TODO: Might need different behavior for different vendor/item combo
-	$('#page_content').show();
-}
-
-
-function glyderReadItemData_Works() {
-	// Reference: https://developers.google.com/fusiontables/docs/samples/gviz_datatable
-	var query = "SELECT 'Scoring Team' as Scoring, " +
-	    "'Receiving Team' as Receiving, 'Minute of goal' as Minute " +
-	    'FROM 1VlPiBCkYt_Vio-JT3UwM-U__APurJvPb6ZEJPg';
-	query += " WHERE 'Scoring Team' = '" + "Germany" + "'";
-	var queryText = encodeURIComponent(query);
-	var gvizQuery = new google.visualization.Query(
-	    'http://www.google.com/fusiontables/gvizdata?tq=' + queryText);
-
-	gvizQuery.send(function(response) {
-	  	var table = response.getDataTable();
-	  	alert (JSON.stringify(table));
-	  });
-}
-
 
 function glyderReadItemData(callback_func) {
 	// Reference: https://developers.google.com/chart/interactive/docs/querylanguage

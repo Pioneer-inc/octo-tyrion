@@ -263,7 +263,7 @@ function loadModals() { document.write('
 								<p style="margin: -.2rem 0;">Already have an account?</p>
 							</div>
 							<div id="login-nv-cell-2">
-								<button type="button" class="btn btn-primary standard-button clear-button">Log&nbsp;In...</button>
+								<button type="button" class="btn btn-primary standard-button clear-button" onclick="showLoginPage();">Log&nbsp;In...</button>
 							</div>
 						</div>
 					</div>
