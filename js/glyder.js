@@ -6,6 +6,8 @@ var glyder_item_cost = 0.15;
 var glyder_item_redirect_link = "";
 var glyder_day_pass_cost = 1.15;
 
+loadModals();
+
 $('#div_daypass_cost').html('$' + Number(glyder_day_pass_cost).toFixed(2));
 
 function glyder_check(vendor_id, item_id, item_href) {
@@ -19,9 +21,7 @@ function glyder_check(vendor_id, item_id, item_href) {
 			// Check if user already has access to the item. If so, send theme there.
 			user_id = localStorage["glyder_login"];
 			if (glyder_check_subscription(user_id, vendor_id) || glyder_check_item_purchased(user_id, vendor_id, item_id)) {
-				if (localStorage["current_item_href"] != 'undefined') {
-					glyder_vendor_page_redirect(localStorage["current_vendor_id"], localStorage["current_item_id"], localStorage["current_item_href"]);
-				}
+				glyder_show_or_redirect();
 			} else {
 				glyderReadItemData(function() {
 					if (glyder_item_cost > 0.0000001) {
@@ -47,14 +47,16 @@ function glyderShowPrepaidModal() {
 
 function glyderShowPrepaidItem() {
 	glyderShowPrepaidModal();
-	if (localStorage["current_item_href"] != 'undefined') {
+	if (!jQuery.isEmptyObject(localStorage["current_item_href"]) && localStorage["current_item_href"] != "undefined") {
 		glyder_vendor_page_redirect(localStorage["current_vendor_id"], localStorage["current_item_id"], localStorage["current_item_href"]);
 	}
 }
 
 function glyder_check_subscription(user_id, vendor_id) {
 	var valid_until = localStorage[user_id+'_'+vendor_id];
-	return (valid_until && valid_until != "0");
+	var d = new Date();
+	var n = Math.floor(d.getTime()/1000); // current time
+	return (valid_until && valid_until >= n);
 }
 
 function glyder_check_item_purchased(user_id, vendor_id, item_id) {
@@ -159,18 +161,28 @@ function glyderBuyItem() {
 function glyderBuyItemAndGo() {
 	glyderBuyItem();
 	//alert ('Redirect page to the URL for item_id ' + localStorage["current_item_id"]);
-	glyder_vendor_page_redirect(localStorage["current_vendor_id"], localStorage["current_item_id"], localStorage["current_item_href"]);
+	glyder_show_or_redirect();
 }
 
 function glyderBuyDaypass() {
-	localStorage.setItem(localStorage["glyder_login"]+'_'+localStorage["current_vendor_id"], "19999999999"); // Epoch Time
+	var d = new Date();
+	var n = Math.round(d.getTime()/1000) + 24*60*60; // validity time in seconds
+	localStorage.setItem(localStorage["glyder_login"]+'_'+localStorage["current_vendor_id"], n); // Epoch Time
 	$("#accessModal").modal("hide");
 }
 
 function glyderBuyDaypassAndGo() {
 	glyderBuyDaypass();
 	//alert ('Redirect page to the URL for item_id ' + localStorage["current_item_id"]);
-	glyder_vendor_page_redirect(localStorage["current_vendor_id"], localStorage["current_item_id"], localStorage["current_item_href"]);
+	glyder_show_or_redirect();
+}
+
+function glyder_show_or_redirect() {
+	if (!jQuery.isEmptyObject(localStorage["current_item_href"]) && localStorage["current_item_href"] != "undefined") {
+		glyder_vendor_page_redirect(localStorage["current_vendor_id"], localStorage["current_item_id"], localStorage["current_item_href"]);
+	} else {
+		glyder_vendor_page_show(localStorage["current_vendor_id"], localStorage["current_item_id"]);					
+	}
 }
 
 // MOVE THIS FUNCTION TO cpModal for vendor specific code
@@ -181,6 +193,12 @@ function glyder_vendor_page_redirect(vendor_id, item_id, item_href) {
 		window.location = item_href;
 	}
 }
+
+function glyder_vendor_page_show(vendor_id, item_id) {
+	// TODO: Might need different behavior for different vendor/item combo
+	$('#page_content').show();
+}
+
 
 function glyderReadItemData_Works() {
 	// Reference: https://developers.google.com/fusiontables/docs/samples/gviz_datatable
