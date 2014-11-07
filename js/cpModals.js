@@ -6,7 +6,8 @@ function testWrite() { document.write('<p>[ This is a test. If you are reading t
 
 function loadModals() { document.write('
 
-<!-- ACCESS MODAL IS BELOW -->
+
+<?php // ACCESS MODAL IS BELOW ?>
 
 <div class="modal fade" id="accessModal" tabindex="-1" role="dialog" aria-labelledby="accessModal" aria-hidden="true">
 	<div class="modal-dialog modal-sm">
@@ -33,16 +34,27 @@ function loadModals() { document.write('
 				<div id="access-container"> <?php // start div table container ?> 
 					<div id="access-row"> <?php // start row 1 ?> 
 						<div id="access-cell-1">
-							<span class="vertical-align-middle">This&nbsp;Article</span>
+							<span class="vertical-align-middle"><div style="display:inline;">This&nbsp;</div><div style="display:inline;" id="item_type">[item_type]</div></span>
 						</div> <?php // /cell-1 ?> 
 						<div id="access-cell-2">
 							<div>
-								<button type="button" class="btn standard-button btn-primary" onclick="glyderBuyItemAndGo();"><div id="div_item_cost">$0.10</div></button>
+								<button type="button" class="btn standard-button btn-primary" onclick="glyderBuyItemAndGo();"><div id="div_item_cost">[div-item-cost]</div></button>
 							</div>
 						</div> <?php // /cell-2 ?> 
 					</div> <?php // /row 1 ?> 
+				</div> <?php // /first access-container div table ?>
+
 				<div style="clear: both;"></div> <?php // clear any floats above ?> 
-				</div> <?php // /access-container ?> 
+
+				<div id="access-container"> <?php // start access-container 2 for next div table ?> 
+				<p class="access-row-sep"> </p> <?php // clear any floats above and separate table rows ?> 
+
+					<div id="access-row"> <?php // start row 2 ?> 
+							<div class="item-info-tag">(&nbsp;Info:&nbsp;<div class="item-info-description" id="item_description">A 70-character [item_description] can go here here here here here here.</div>&nbsp;)</div>
+					</div> <?php // /row 2 ?>
+
+				<div style="clear: both;"></div> <?php // clear any floats above ?> 
+				</div> <?php // /access-container 2 ?> 
 
 			<div style="clear: both;"></div> <?php // clear any floats above ?> 
 			</div> <?php // end pod1 here ?> 
@@ -97,15 +109,145 @@ function loadModals() { document.write('
 
 			<div class="modal-footer"><?php // start MODAL FOOTER here ?> 
 				<div> <?php // start footer div ?> 
-					<div style="background-size: cover; display: inline-block;"><a href="#"><img class="resize-glyder-icon-footer" src="http://glyder.com/poc/images/glyder-icon-sm.jpg"></div>&nbsp;&nbsp;<span class="vertical-align-middle">Glyder&nbsp;Powered</a>
-					<div style="display: inline-block; float: right;"> <?php // start forgot pw div ?> <a href="#">My&nbsp;Account</a>&nbsp;|&nbsp;<a href="#" onclick="glyderLogout();">Logout</a></span>
-					</div> <?php // /forgot pw ?> 
+					
+						<div style="background-size: cover; display: inline-block;">
+							<a href="#"><span class="vertical-align-middle"><img class="resize-glyder-icon-footer" src="http://glyder.com/poc/images/glyder-icon-sm.jpg">&nbsp;&nbsp;Glyder&nbsp;Powered&nbsp;</span></a>
+						</div>
+
+						<div style="display: inline-block; float: right;"><?php // start forgot pw div ?><a href="#"><span class="vertical-align-middle">My&nbsp;Account</span></a> &nbsp;|&nbsp; <a href="#" onclick="glyderLogout();"><span class="vertical-align-middle">Log&nbsp;Out</span></a>
+						</div> <?php // /forgot pw ?> 
+
+				</div> <?php // /footer div ?> 
+			</div> <?php // /modal-footer ?> 
+			
+		</div> <?php // end modal content ?>
+	</div> <?php // end modal-dialog ?>
+</div> <?php // end accessModal ?>
+
+
+<?php // ACCESS AUDIO MODAL IS BELOW ?>
+
+<div class="modal fade" id="accessAudioModal" tabindex="-1" role="dialog" aria-labelledby="accessAudioModal" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content" style="width: 30rem; min-width: 30rem; max-width: 30rem;">
+
+		<div class="modal-header"> <?php // start MODAL HEADER ?> 
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<div style="background-size: cover;">
+					<img class="resize-logo-modal-header" src="http://glyder.com/poc/images/cp/cp-logo.png">
+					<img class="resize-logo-modal-header" src="http://glyder.com/poc/images/bullet.png">
+					<img class="resize-logo-modal-header" src="http://glyder.com/poc/images/access.png">
+				</div>
+		</div> <?php // end modal header ?> 
+
+		<div style="clear: both;"></div> <?php // clear any floats above ?> 
+
+		<div class="modal-body"> <?php // start MODAL BODY ?> 
+
+			<div class="pod0 podrf brdr brdr-l brdr-t brdr-r"> <?php // start pod0 here ?> 
+				<span class="text-pod0"><div>Get it now:</div></span>
+			</div> <?php // end pod0 ?> 
+
+			<div class="pod1 podfr brdr brdr-r brdr-b brdr-l"> <?php // start pod1 here ?> 
+				<div id="access-container"> <?php // start div table container ?> 
+
+					<div id="access-row"> <?php // start row 1 ?> 
+						<div id="access-cell-1">
+							<span class="vertical-align-middle"><div style="display:inline;">This&nbsp;</div><div style="display:inline;" id="item_type">[item_type]</div></span>
+						</div> <?php // /cell-1 ?> 
+						<div id="access-cell-2">
+							<div>
+								<button type="button" class="btn standard-button btn-primary" onclick="glyderBuyItemAndGo();"><div id="div_item_cost">[div_item_cost]</div></button>
+							</div>
+						</div> <?php // /cell-2 ?> 
+					</div> <?php // /row 1 ?> 
+
+					<p class="access-row-sep"> </p> <?php // clear any floats above and separate table rows ?> 
+
+					<div id="access-row"> <?php // start row 2 ?> 
+						<div id="access-cell-1">
+							<span class="vertical-align-middle">Preview</span>
+						</div> <?php // /cell-1 ?> 
+						<div id="access-cell-2">
+							<div>
+								<button type="button" class="btn standard-button btn-primary" onclick=""><div id="">&#9658</div></button>
+							</div>
+						</div> <?php // /cell-2 ?> 
+					</div> <?php // /row 2 ?> 
+
+				</div> <?php // /first access-container div table ?>
+
+				<div style="clear: both;"></div> <?php // clear any floats above ?> 
+
+				<div id="access-container"> <?php // start access-container 2 for next div table ?> 
+				<p class="access-row-sep"> </p> <?php // clear any floats above and separate table rows ?> 
+
+					<div id="access-row"> <?php // start row 2 ?> 
+							<div class="item-info-tag">(&nbsp;Info:&nbsp;<div class="item-info-description" id="item_description">A 70-character [item_description] can go here here here here here here.</div>&nbsp;)</div>
+					</div> <?php // /row 2 ?>
+
+				<div style="clear: both;"></div> <?php // clear any floats above ?> 
+				</div> <?php // /access-container 2 ?> 
+
+			<div style="clear: both;"></div> <?php // clear any floats above ?> 
+			</div> <?php // end pod1 here ?> 
+
+			<div class="pod0-2-white podrf brdr brdr-l brdr-t brdr-r"> 
+				<span class="text-pod0"><div>More options:</div></span>
+			</div> <?php // end pod0 ?> 
+
+			<div class="pod1-white podfr brdr brdr-r brdr-b brdr-l"> 
+					<div id="access-container"> <?php // start div table container ?> 
+
+						<div id="access-row-int"> <?php // start row 2 ?> 
+							<div id="access-cell-1">
+								<span class="vertical-align-middle">Whole&nbsp;Album</span>
+							</div> <?php // /cell-1 ?> 
+							<div id="access-cell-2">
+								<div>
+									<button type="button" class="btn standard-button btn-primary" onclick="glyderBuyItemAndGo();"><div id="div_item_cost">[div_item_cost]</div></button>
+								</div>
+							</div> <?php // /cell-2 ?> 
+						</div> <?php // /row 2 ?> 
+
+				</div> <?php // /first access-container div table ?>
+
+				<div style="clear: both;"></div> <?php // clear any floats above ?> 
+
+				<div id="access-container"> <?php // start access-container 2 for next div table ?> 
+					<p class="access-row-sep"> </p> <?php // clear any floats above and separate table rows ?> 
+
+					<div id="access-row"> <?php // start row 2 ?> 
+							<div class="item-info-tag">(&nbsp;Info:&nbsp;<div class="item-info-description" id="item_description">A 70-character [item_description] can go here here here here here here. NOTE: THE ALBUM ITEM NEEDS A DIFFERENT ITEM_ID, ITEM_DESCRIPTION, AND DIV_ITEM_COST THAN THE SINGLE SONG ITEM ABOVE.</div>&nbsp;)</div>
+					</div> <?php // /row 2 ?>
+
+					<div style="clear: both;"></div> <?php // clear any floats above ?> 
+				</div> <?php // /access-container 2 ?> 
+
+				</div> <?php // end pod2 here ?> 
+
+			</div> <?php // End Modal Body here ?> 
+
+			<div style="clear: both;"></div> <?php // clear any floats above ?> 
+
+			<div class="modal-footer"><?php // start MODAL FOOTER here ?> 
+				<div> <?php // start footer div ?> 
+					
+						<div style="background-size: cover; display: inline-block;">
+							<a href="#"><span class="vertical-align-middle"><img class="resize-glyder-icon-footer" src="http://glyder.com/poc/images/glyder-icon-sm.jpg">&nbsp;&nbsp;Glyder&nbsp;Powered&nbsp;</span></a>
+						</div>
+
+						<div style="display: inline-block; float: right;"><?php // start forgot pw div ?><a href="#"><span class="vertical-align-middle">My&nbsp;Account</span></a> &nbsp;|&nbsp; <a href="#" onclick="glyderLogout();"><span class="vertical-align-middle">Log&nbsp;Out</span></a>
+						</div> <?php // /forgot pw ?> 
+
 				</div> <?php // /footer div ?> 
 			</div> <?php // /modal-footer ?> 
 
 		</div> <?php // end modal content ?>
 	</div> <?php // end modal-dialog ?>
-</div> <?php // end modal ?>
+</div> <?php // end accessAudioModal ?>
+
+
 
 
 <?php // LOGIN MODAL IS BELOW ?>
@@ -185,15 +327,17 @@ function loadModals() { document.write('
 
 			<div class="modal-footer"><?php // start MODAL FOOTER here ?> 
 				<div> <?php // start footer div ?> 
-					<div style="background-size: cover; display: inline-block;"><a href="#"><img class="resize-glyder-icon-footer" src="http://glyder.com/poc/images/glyder-icon-sm.jpg"></div>&nbsp;&nbsp;<span class="vertical-align-middle">Glyder&nbsp;Powered</a>
-					<div style="display: inline-block; float: right; vertical-align: middle;"> <?php // start forgot pw div ?> <a href="#">Forgot&nbsp;Password?</a></span>
+					<div style="background-size: cover; display: inline-block;">
+						<a href="#"><span class="vertical-align-middle"><img class="resize-glyder-icon-footer" src="http://glyder.com/poc/images/glyder-icon-sm.jpg">&nbsp;&nbsp;Glyder&nbsp;Powered&nbsp;</span></a>
+					</div>
+					<div style="display: inline-block; float: right;"> <?php // start forgot pw div ?><a href="#"><span class="vertical-align-middle">Forgot&nbsp;Password?</span></a>
 					</div> <?php // /forgot pw ?> 
 				</div> <?php // /footer div ?> 
 			</div> <?php // /modal-footer ?> 
 
 		</div> <?php // end modal content ?>
 	</div> <?php // end modal-dialog ?>
-</div> <?php // end modal ?>
+</div> <?php // end loginModal ?>
 
 
 <?php // SIGNUP MODAL IS BELOW ?>
@@ -274,15 +418,17 @@ function loadModals() { document.write('
 
 			<div class="modal-footer"><?php // start MODAL FOOTER here ?> 
 				<div> <?php // start footer div ?> 
-					<div style="background-size: cover; display: inline-block;"><a href="#"><img class="resize-glyder-icon-footer" src="http://glyder.com/poc/images/glyder-icon-sm.jpg"></div>&nbsp;&nbsp;<span class="vertical-align-middle">Glyder&nbsp;Powered</a>
-					<div style="display: inline-block; float: right; vertical-align: middle;"> <?php // start forgot pw div ?> <a href="#">Forgot&nbsp;Password?</a></span>
+					<div style="background-size: cover; display: inline-block;">
+						<a href="#"><span class="vertical-align-middle"><img class="resize-glyder-icon-footer" src="http://glyder.com/poc/images/glyder-icon-sm.jpg">&nbsp;&nbsp;Glyder&nbsp;Powered&nbsp;</span></a>
+					</div>
+					<div style="display: inline-block; float: right;"><?php // start forgot pw div ?><a href="#"><span class="vertical-align-middle">Forgot&nbsp;Password?</span></a>
 					</div> <?php // /forgot pw ?> 
 				</div> <?php // /footer div ?> 
 			</div> <?php // /modal-footer ?> 
 
 		</div> <?php // end modal content ?>
 	</div> <?php // end modal-dialog ?>
-</div> <?php // end modal ?>
+</div> <?php // end signupModal ?>
 
 
 <?php // AUTOPAY MODAL IS BELOW ?>
@@ -344,15 +490,17 @@ function loadModals() { document.write('
 
 			<div class="modal-footer"><?php // start MODAL FOOTER here ?> 
 				<div> <?php // start footer div ?> 
-					<div style="background-size: cover; display: inline-block;"><a href="#"><img class="resize-glyder-icon-footer" src="http://glyder.com/poc/images/glyder-icon-sm.jpg"></div>&nbsp;&nbsp;<span class="vertical-align-middle">Glyder&nbsp;Powered</a>
-					<div style="display: inline-block; float: right;"> <?php // start forgot pw div ?> <a href="#">My&nbsp;Account</a></span>
+					<div style="background-size: cover; display: inline-block;">
+						<a href="#"><span class="vertical-align-middle"><img class="resize-glyder-icon-footer" src="http://glyder.com/poc/images/glyder-icon-sm.jpg">&nbsp;&nbsp;Glyder&nbsp;Powered&nbsp;</span></a>
+					</div>
+					<div style="display: inline-block; float: right;"><?php // start forgot pw div ?><a href="#"><span class="vertical-align-middle">My&nbsp;Account</span></a>
 					</div> <?php // /forgot pw ?> 
 				</div> <?php // /footer div ?> 
 			</div> <?php // /modal-footer ?> 
 
 		</div> <?php // end modal content ?>
 	</div> <?php // end modal-dialog ?>
-</div> <?php // end modal ?>
+</div> <?php // end autoPayModal ?>
 
 
 <?php // PREPAID MODAL IS BELOW ?>
@@ -424,15 +572,17 @@ function loadModals() { document.write('
 
 			<div class="modal-footer"><?php // start MODAL FOOTER here ?> 
 				<div> <?php // start footer div ?> 
-					<div style="background-size: cover; display: inline-block;"><a href="#"><img class="resize-glyder-icon-footer" src="http://glyder.com/poc/images/glyder-icon-sm.jpg"></div>&nbsp;&nbsp;<span class="vertical-align-middle">Glyder&nbsp;Powered</a>
-					<div style="display: inline-block; float: right;"> <?php // start forgot pw div ?> <a href="#">My&nbsp;Account</a>&nbsp;|&nbsp;<a href="#" onclick="glyderLogout();">Logout</a></span>
+					<div style="background-size: cover; display: inline-block;">
+						<a href="#"><span class="vertical-align-middle"><img class="resize-glyder-icon-footer" src="http://glyder.com/poc/images/glyder-icon-sm.jpg">&nbsp;&nbsp;Glyder&nbsp;Powered&nbsp;</span></a>
+					</div>
+					<div style="display: inline-block; float: right;"><?php // start forgot pw div ?><a href="#"><span class="vertical-align-middle">My&nbsp;Account</span></a> &nbsp;|&nbsp; <a href="#" onclick="glyderLogout();"><span class="vertical-align-middle">Log&nbsp;Out</span></a>
 					</div> <?php // /forgot pw ?> 
 				</div> <?php // /footer div ?> 
 			</div> <?php // /modal-footer ?> 
 
 		</div> <?php // end modal content ?>
 	</div> <?php // end modal-dialog ?>
-</div> <?php // end modal ?>
+</div> <?php // end prePaidModal ?>
 
 '); 
 } 

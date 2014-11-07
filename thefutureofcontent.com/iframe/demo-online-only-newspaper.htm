@@ -10,23 +10,9 @@
 	-->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-	<title>Demo - Online Only Newspaper</title>
+	<title>Demo - Online Newspaper</title>
 
-	<!-- Link to Google fonts before any css style sheets -->
-		<link rel='stylesheet' id='googlefonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin' type='text/css' media='all' />
-	<!-- Link to jQuery UI css -->
-		<!--link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css"-->
-	<!-- Link to Bootstrap css -->
-		<link rel="stylesheet" type="text/css" href="http://glyder.com/poc/css/bootstrap.min.css">
-	<!-- Link to Glyder modals css -->
-		<link rel="stylesheet" type="text/css" href="http://glyder.com/poc/css/glyder-modals.css">
-
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
+<!-- START HEAD SCRIPT - VENDOR TO ADD THIS TO HEAD SECTION -->
 
 	<script>
 	function toggle(obj) {
@@ -36,6 +22,8 @@
 	    parent.alertsize(document.body.scrollHeight);
 	}
 	</script>
+
+<!-- END OF HEAD SCRIPT -->
 
 	<STYLE type="text/css">
    	a:link {
@@ -57,9 +45,27 @@
    	}
 	</STYLE>
 
+<!-- START OF GLYDER FILES -->
+
+<!-- Glyder related CSS -->
+<link rel='stylesheet' id='googlefonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin' type='text/css' media='all' />
+<link rel="stylesheet" type="text/css" href="http://glyder.com/poc/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="http://glyder.com/poc/css/glyder-modals.css">
+
+<!-- Glyder related JS -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://glyder.com/poc/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://glyder.com/poc/js/cpModals.min.js"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript" src="http://glyder.com/poc/js/glyder.js"></script>
+
+<!-- END OF GLYDER FILES -->
+
 </head>
 
 <body onload="parent.alertsize(document.body.scrollHeight);">
+
+<!-- START VENDOR LOGO -->
 
 	<div style="display:table; width:100%; background-color:gold;">
 		<div style="display:table-cell; width:100%; height:5em; max-height:8em; min-height:8em; vertical-align:middle; text-align:center; padding:3px 0;">
@@ -67,12 +73,13 @@
 		</div>
 	</div>
 
+<!-- END VENDOR LOGO -->
 
 <div style="border-style:transparent; border-width:0px; padding:0.75em 1em 0.5em 1em; margin-top:0.75em; margin-bottom:0.5em; background:#FFFAF5">
 <table style="border:0; border-spacing:0; padding:0; border-collapse:collapse; margin-bottom:0; margin-top:0; margin-left:-6px;">
 <tr>
 <td style="line-height:1.75em; text-align:right; vertical-align:middle;">&nbsp;&nbsp;<img src="/images/lock/lock-small.png"/>&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td><div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.75em; line-height:1.75em; vertical-align:middle;"><a href="/iframe/demo-online-only-newspaper-item01.htm">Interesting Article 1</a></div>
+<td><div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.75em; line-height:1.75em; vertical-align:middle;"><a href="#" onclick="glyder_check('seattle_pie','item01', 'http://thefutureofcontent.com/iframe/demo-online-only-newspaper-item01.htm');">Interesting Article 1</a></div>
 <div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.4em; color:#777777; line-height:1.4em;">And It Has an Intriguing Subtitle</div></td>
 </tr>
 </table>
@@ -82,7 +89,7 @@
 <span style="color:#888888; font-size:1em;">Updated Today at 8:47 a.m. ET</span>
 </div>
 <div style="font-size:1em;">
-Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi <span style="color:#777777;">architecto beatae vitae</span> <span style="color:#888888;">dicta sunt, explicabo.</span> <span style="color:#999999;">Nemo enim ipsam voluptatem,</span> <span style="color:#a6a6a6;">quia voluptas sit, aspernatur</span> <span style="color:#b3b3b3;">aut odit aut fugit,</span> <span style="color:#bfbfbf;">sed quia consequuntur magni</span> <span style="color:#cccccc;">dolores eos ... </span><a href="/iframe/demo-online-only-newspaper-item01.htm">[more]</a>.
+Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi <span style="color:#777777;">architecto beatae vitae</span> <span style="color:#888888;">dicta sunt, explicabo.</span> <span style="color:#999999;">Nemo enim ipsam voluptatem,</span> <span style="color:#a6a6a6;">quia voluptas sit, aspernatur</span> <span style="color:#b3b3b3;">aut odit aut fugit,</span> <span style="color:#bfbfbf;">sed quia consequuntur magni</span> <span style="color:#cccccc;">dolores eos ... </span><a href="#" onclick="glyder_check('seattle_pie','item01', 'http://thefutureofcontent.com/iframe/demo-online-only-newspaper-item01.htm');">[more]</a>.
 </div>
 </div>
 
@@ -91,7 +98,7 @@ Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium dolo
 <table style="border:0; border-spacing:0; padding:0; border-collapse:collapse; margin-bottom:0; margin-top:0; margin-left:-6px;">
 <tr>
 <td style="line-height:1.75em; text-align:right; vertical-align:middle;">&nbsp;&nbsp;<img src="/images/lock/lock-small.png"/>&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td><div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.75em; line-height:1.75em; vertical-align:middle;"><a href="/iframe/demo-online-only-newspaper-item02.htm">Interesting Article 2</a></div>
+<td><div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.75em; line-height:1.75em; vertical-align:middle;"><a href="#" onclick="glyder_check('seattle_pie','item02', 'http://thefutureofcontent.com/iframe/demo-online-only-newspaper-item02.htm');">Interesting Article 2</a></div>
 <div style="font-family:Georgia,'Century Schoolbook','Times New Roman',Times,serif; font-size:1.4em; color:#777777; line-height:1.4em;">And It Has an Intriguing Subtitle</div></td>
 </tr>
 </table>
@@ -101,18 +108,14 @@ Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium dolo
 <span style="color:#888888; font-size:1em;">Updated Today at 8:47 a.m. ET</span>
 </div>
 <div style="font-size:1em;">
-Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi <span style="color:#777777;">architecto beatae vitae</span> <span style="color:#888888;">dicta sunt, explicabo.</span> <span style="color:#999999;">Nemo enim ipsam voluptatem,</span> <span style="color:#a6a6a6;">quia voluptas sit, aspernatur</span> <span style="color:#b3b3b3;">aut odit aut fugit,</span> <span style="color:#bfbfbf;">sed quia consequuntur magni</span> <span style="color:#cccccc;">dolores eos ... </span><a href="/iframe/demo-online-only-newspaper-item02.htm">[more]</a>.
+Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi <span style="color:#777777;">architecto beatae vitae</span> <span style="color:#888888;">dicta sunt, explicabo.</span> <span style="color:#999999;">Nemo enim ipsam voluptatem,</span> <span style="color:#a6a6a6;">quia voluptas sit, aspernatur</span> <span style="color:#b3b3b3;">aut odit aut fugit,</span> <span style="color:#bfbfbf;">sed quia consequuntur magni</span> <span style="color:#cccccc;">dolores eos ... </span><a href="#" onclick="glyder_check('seattle_pie','item02', 'http://thefutureofcontent.com/iframe/demo-online-only-newspaper-item02.htm');">[more]</a>.
 </div>
 </div>
 
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+
 
 </body>
 </html>

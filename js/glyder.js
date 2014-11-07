@@ -139,7 +139,7 @@ function glyderLogin() {
 			if (localStorage) {
 				localStorage.setItem("glyder_login", username);
 				$("#loginModal").modal("hide");
-				glyder_check(localStorage["current_vendor_id"], localStorage["current_item_id"]);
+				glyder_check(localStorage["current_vendor_id"], localStorage["current_item_id"], localStorage["current_item_href"]);
 			}
 			return true;
 		default:
