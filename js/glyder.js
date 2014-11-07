@@ -56,6 +56,7 @@ function glyderShowPrepaidModal() {
 	var prePaidModal = $("#prePaidModal");
 	setTimeout(function(){prePaidModal.modal('hide')}, 3000);
 	prePaidModal.modal('show');
+	localStorage.setItem('LastPurchase', '');
 }
 
 function glyderShowPrepaidItem() {
@@ -71,7 +72,6 @@ function glyder_check_subscription(user_id, vendor_id) {
 	if (valid_until && valid_until >= n) {
 		if (localStorage['LastPurchase'] == item) {
 			$('#div_access_message').html('Thank you for your purchase.');				
-			localStorage.setItem('LastPurchase', '');
 		} else {
 			$('#div_access_message').html('Your account includes access to this premium content.');
 		}
@@ -86,7 +86,6 @@ function glyder_check_item_purchased(user_id, vendor_id, item_id) {
 	if (valid_until && valid_until != "0") {
 		if (localStorage['LastPurchase'] == item) {
 			$('#div_access_message').html('Thank you for your purchase.');				
-			localStorage.setItem('LastPurchase', '');
 		} else {
 			$('#div_access_message').html('You previously bought this item.&nbsp; It&#39;s&nbsp;yours.');
 		}
