@@ -64,20 +64,32 @@ function glyderShowPrepaidItem() {
 }
 
 function glyder_check_subscription(user_id, vendor_id) {
-	var valid_until = localStorage[user_id+'_'+vendor_id];
+	var item = user_id+'_'+vendor_id;
+	var valid_until = localStorage[item];
 	var d = new Date();
 	var n = Math.floor(d.getTime()/1000); // current time
 	if (valid_until && valid_until >= n) {
-		$('#div_access_message').html('Your account includes access to this premium content.');
+		if (localStorage['LastPurchase'] == item) {
+			$('#div_access_message').html('Thank you for your purchase.');				
+			localStorage.setItem('LastPurchase', '');
+		} else {
+			$('#div_access_message').html('Your account includes access to this premium content.');
+		}
 		return true;
 	}
 	return false;
 }
 
 function glyder_check_item_purchased(user_id, vendor_id, item_id) {
-	var valid_until = localStorage[user_id+'_'+vendor_id+'_'+item_id];
+	var item = user_id+'_'+vendor_id+'_'+item_id;
+	var valid_until = localStorage[item];
 	if (valid_until && valid_until != "0") {
-		$('#div_access_message').html('You previously bought this item.&nbsp; It&#39;s&nbsp;yours.');
+		if (localStorage['LastPurchase'] == item) {
+			$('#div_access_message').html('Thank you for your purchase.');				
+			localStorage.setItem('LastPurchase', '');
+		} else {
+			$('#div_access_message').html('You previously bought this item.&nbsp; It&#39;s&nbsp;yours.');
+		}
 		return true;				
 	}
 	return false;
@@ -162,8 +174,11 @@ function glyderLogout() {
 
 function glyderBuyItem() {
 	// TODO: return false if payment process failed
-	localStorage.setItem(localStorage["glyder_login"]+'_'+localStorage["current_vendor_id"]+'_'+localStorage["current_item_id"], "19999999999"); // Epoch Time
+	var item = localStorage["glyder_login"]+'_'+localStorage["current_vendor_id"]+'_'+localStorage["current_item_id"];
+	localStorage.setItem(item, "19999999999"); // Epoch Time
+	localStorage.setItem('LastPurchase', item);
 	$("#accessModal").modal("hide");
+	$('#div_access_message').html('Thank you for your purchase.');				
 	return true;
 }
 
@@ -174,10 +189,13 @@ function glyderBuyItemAndGo() {
 
 function glyderBuyDaypass() {
 	// TODO: return false is payment process failed
+	var item = localStorage["glyder_login"]+'_'+localStorage["current_vendor_id"];
 	var d = new Date();
 	var n = Math.round(d.getTime()/1000) + 24*60*60; // validity time in seconds
-	localStorage.setItem(localStorage["glyder_login"]+'_'+localStorage["current_vendor_id"], n); // Epoch Time
+	localStorage.setItem(item, n); // Epoch Time
+	localStorage.setItem('LastPurchase', item);
 	$("#accessModal").modal("hide");
+	$('#div_access_message').html('Thank you for your purchase.');				
 	return true;
 }
 
