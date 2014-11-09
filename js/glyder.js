@@ -133,14 +133,15 @@ function glyderSignUp() {
 };
 
 function glyderLogin() {
-	var username =  $("#loginUsername").val();
-	var password = $("#loginPassword").val();
+	var username =  $("#loginUsername").val().toLowerCase();
+	var password = $("#loginPassword").val().toLowerCase();
 	switch (username) {
 		case 'smohan36@gmail.com':
 		case '4252337793':
 		case 'bvolbeda@gmail.com':
 		case '2067783303':
-			if (password != 'Kitanda') {
+		case 'visitor':
+			if (password != 'fastr') {
 				alert('Please enter a valid password to login.');
 				if (localStorage) {
 					localStorage.setItem("glyder_login", "");
