@@ -34,7 +34,7 @@ function loadModals() { document.write('
 				<div id="access-container"> <?php // start div table container ?> 
 					<div id="access-row"> <?php // start row 1 ?> 
 						<div id="access-cell-1">
-							<span class="vertical-align-middle"><div style="display:inline;">This&nbsp;</div><div style="display:inline;" id="item_type">[item_type]</div></span>
+							<span class="vertical-align-middle"><div style="display:inline;">This&nbsp;</div><div style="display:inline;" id="div_item_type">[item_type]</div></span>
 						</div> <?php // /cell-1 ?> 
 						<div id="access-cell-2">
 							<div>
@@ -50,7 +50,7 @@ function loadModals() { document.write('
 				<p class="access-row-sep"> </p> <?php // clear any floats above and separate table rows ?> 
 
 					<div id="access-row"> <?php // start row 2 ?> 
-							<div class="item-info-tag">(&nbsp;Info:&nbsp;<div class="item-info-description" id="item_description">A 70-character [item_description] can go here here here here here here.</div>&nbsp;)</div>
+							<div class="item-info-tag"><div class="item-info-description" id="div_item_description">A 70-character [item_description] can go here here here here here here.</div></div>
 					</div> <?php // /row 2 ?>
 
 				<div style="clear: both;"></div> <?php // clear any floats above ?> 

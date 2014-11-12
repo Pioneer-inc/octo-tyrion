@@ -4,6 +4,8 @@ google.load('visualization', '1', { packages: ['table', 'corechart'] });
 var glyder_catalog_gsheet_url = "https://docs.google.com/spreadsheets/d/1hs7Bu9Y2hK0Bmai-h4stC5ho-qh61h7QxbFNCOpK2Ro/edit?usp=sharing";
 var glyder_item_cost = 0.15;
 var glyder_item_redirect_link = "";
+var glyder_item_type = "";
+var glyder_item_description = "";
 
 // MOVE THESE TWO FUNCTION TO cpModal for vendor specific code
 var glyder_day_pass_cost = 1.15;
@@ -235,12 +237,16 @@ function glyderReadItemData(callback_func) {
 	  	if (data.getNumberOfRows() < 1) {
 	  		alert ("Vendor: " + vendor_id + ", Item: " + item_id + " does not exist in the catalog.");
 	  	} else {
+			glyder_item_description = data.getValue(0,3);
 			glyder_item_cost = data.getValue(0,4);
 			glyder_item_redirect_link = data.getValue(0,5);
+			glyder_item_type = data.getValue(0,6);
 			if (glyder_item_cost < 0.000001) {
 				$('#div_access_message').html('Your account includes <strong>free&nbsp;access</strong> to this premium content.');				
 			}
 			$('#div_item_cost').html('$' + Number(glyder_item_cost).toFixed(2));
+			$('#div_item_type').html(glyder_item_type);
+			$('#div_item_description').html(glyder_item_description);
 		}
 		callback_func();
 	});
