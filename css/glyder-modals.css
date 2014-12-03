@@ -177,6 +177,49 @@ body {
 /* END MODALS FADE IN SECTION */
 
 
+/***********************
+.modal-dialog settings to help position or center the modal on the page. The solutions below seem a little inelegant, but seems to work. These overwrite some default settings in bootstrap.css or bootstrap.min.css.
+***********************/
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 40px 30px; /* sets default margins but doesn't do much to center the modal; need some other coding and probably some jscript elsewhere. */ 
+}
+
+@media (min-width: 350px) {
+  .modal-dialog {
+    width: 300px;
+    margin: 30px auto;
+  }
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  }
+  .modal-sm {
+    width: 300px;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 600px;
+    margin: 40px auto;
+  }
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  }
+  .modal-sm {
+    width: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-lg {
+    width: 900px;
+  }
+}
 
 
 /* MODALS SECTIONS SECTION */
@@ -943,11 +986,9 @@ the other widgets in an inline form.
 /* END OF PODS SECTION */
 
 
-
-/* STYLE A TEXT LINK TO LOOK LIKE A BUTTON */
-
-/* Exampe: 
-<a class="textbtn" href="#">Testing the textbtn formatting.</a>
+/* TEXTBTN SECTION
+	STYLE A TEXT LINK TO LOOK LIKE A BUTTON 
+	Example: <a class="textbtn" href="#">Testing the textbtn formatting.</a>
 */
 
 .textbtn {
@@ -992,9 +1033,7 @@ a.textbtn:hover {
 	border-radius: 4px;
 	white-space: nowrap;
 }
-
-
-/* END OF TEXT LINK TO LOOK LIKE A BUTTON SECTION */
+/*  END OF TEXTBTN SECTION */
 
 
 /* media query for most mobile devices */
