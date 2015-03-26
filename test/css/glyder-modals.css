@@ -1,0 +1,1212 @@
+/* COLORS */
+
+/*
+#3C78C8; is bright blue
+#08c654; is bright green
+#ffad33; is vivid orange
+
+
+#08c674; is another bright green
+---; is soft light red
+#8AC007; is a gold yellow
+#d5d5d5; is lighter gray
+#bbbbbb; is light gray
+#aeaeae; is medium-dark gray
+#959595; is dark gray
+#fff; is white
+#DAEAF6; is light blue pod background
+---; is black
+
+#3C78C8; social icon hover outline (bright blue)
+#3C78C8; standard button background (bright blue)
+
+*/
+
+/* END OF COLORS */
+
+
+* {
+	margin: 0;
+	padding: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* SETTING BASELINE FONT AND REM VALUES */
+
+html {	font-size: 62.5% 
+}
+
+body {
+	font-family: 'Open Sans', 'Roboto', Arial, 'Helvetica Neue', 'Helvetica', Helvetica, sans-serif;	
+	font-size: 15px; font-size: 1.5rem; /* =15px */
+}
+
+/* END OF BASELINE FONT AND REM VALUES */
+
+.main-content {
+	height: 80rem;
+	width: 100rem;
+	margin: 0 auto;
+}
+
+
+/* SOME BASIC TEXT-ALIGN CLASSES */
+.left {
+	text-align:left;
+}
+.center {
+	text-align:center;
+}
+.right {
+	text-align:right;
+}
+
+
+/* SOCIAL ICON OUTLINE ON HOVER   */
+
+.social-icon-container {
+	text-align: center; 
+	margin: -.5rem 0 0 0; 
+	white-space: nowrap;
+}
+
+.social-icon-container img {    /* Use this class for div containing multiple social icons, or just one */
+    outline: 0px solid white;
+    outline-offset: 0px;
+ 
+  -webkit-transition: all 0s ease;
+     -moz-transition: all 0s ease;
+       -o-transition: all 0s ease;
+      -ms-transition: all 0s ease;
+          transition: all 0s ease;
+}
+ 
+.social-icon-container img:hover {
+	outline: 2px solid #3C78C8;
+	outline-offset: -0px;
+}
+
+.social-icon-container a {
+	font-weight: ;
+	color: ;
+	text-decoration: none;
+	font-size: ;
+}
+.social-icon-container a:hover
+{
+	color: white;
+}
+
+/* END OF SOCIAL ICONS OUTLINE */
+
+
+
+/* FORMS CONTROL SECTION - log in input boxes etc */
+
+.form-control {
+	margin: 0 0 0 0rem;
+    display: block;
+    width: 100%;
+    height: 3.4rem ;
+    padding: .6rem 1.2rem;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: #555;
+    background-color: #FFF;
+    background-image: none;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+
+.form-instrux {
+	font-size: 1.1rem;
+	margin: -.7rem 0 0 2px;
+}
+
+.form-instrux-confirm {
+	font-size: 1.1rem;
+	margin: 1rem 0 0 2px;
+}
+
+.form-separator {
+	line-height: 1.5rem;
+	margin: 0;
+}
+
+
+/* END FORMS CONTROL SECTION */
+
+
+
+
+
+/* MODIFY MODAL FADE IN AND SLIDE IN */
+
+/* If use class="modal FADE", this removes the "slide" effect (which is distracting and is apparently called "fade" in Bootstrap), but the actual "fading in" of the modal is still somehow retained (which is good) */
+.modal.fade .modal-dialog {
+  -webkit-transition: none !important;
+     -moz-transition: none !important;
+       -o-transition: none !important;
+          transition: none !important;
+   -webkit-transform: none !important;
+      -moz-transform: none !important;
+       -ms-transform: none !important;
+           transform: none !important;
+}
+
+/* This changes the speed of modals' "fade in" transition. Originally was .15s */
+.fade {
+   opacity: 0;
+   -webkit-transition: opacity .1s linear;
+      -moz-transition: opacity .1s linear;
+       -ms-transition: opacity .1s linear;
+        -o-transition: opacity .1s linear;
+           transition: opacity .1s linear;
+ }
+
+/* This changes the opacity of the modal backdrop overlay. Originally was __. For transparent, set to 0. */
+.modal-backdrop, .modal-backdrop.fade.in {
+    opacity: 0.3;
+}
+
+/* END MODALS FADE IN SECTION */
+
+
+/***********************
+.modal-dialog settings to help position or center the modal on the page. The solutions below seem a little inelegant, but seems to work. These overwrite some default settings in bootstrap.css or bootstrap.min.css.
+***********************/
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 40px 30px; /* sets default margins but doesn't do much to center the modal; need some other coding and probably some jscript elsewhere. */ 
+}
+
+@media (min-width: 350px) {
+  .modal-dialog {
+    width: 300px;
+    margin: 30px auto;
+  }
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  }
+  .modal-sm {
+    width: 300px;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 600px;
+    margin: 40px auto;
+  }
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  }
+  .modal-sm {
+    width: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-lg {
+    width: 900px;
+  }
+}
+
+
+/* MODALS SECTIONS SECTION */
+
+.modal-header {
+    padding: .9rem 1.5rem 0; 
+    border-bottom: 0px solid #fff;
+    min-height: 3.2rem;
+    max-height: 3.2rem;
+    text-align: left;
+}
+
+.modal-body {
+    vertical-align: top;
+    padding: 0.8rem;
+    margin: 0; // -2.5rem 0 0;
+}
+
+.modal-footer {
+	margin-top: -.5rem;
+	padding: 0.4rem 2rem .8rem 2rem;
+	text-align: left;
+	border-top: 0px solid #fff;
+	font-size: 1.1rem;
+	font-weight: 100;
+	text-decoration: none;
+}
+
+.modal-footer a {
+    text-decoration: none;
+}
+
+.modal-footer a:hover {
+    text-decoration: none;
+}
+
+.modal-footer-text {
+	display: inline-block; 
+	vertical-align: middle;
+}
+
+.item-info-tag {
+	display: inline;
+	margin-top: ;
+	padding: ;
+	text-align: left;
+	border-top: 0px solid #fff;
+	font-size: 1.3rem;
+	font-weight: 100; // was 500...why?
+	text-decoration: none;
+}
+
+.item-info-description {
+	display: inline;
+	margin-top: ;
+	padding: ;
+	text-align: left;
+	border-top: 0px solid #fff;
+	font-size: 1.3rem;
+	font-weight: 100;
+	text-decoration: none;
+}
+
+/* SPAN CLASSES FOR VERTICALLY ALIGNING */
+
+.vertical-align-top {
+	display: inline-block; 
+	vertical-align: top;
+	// width: 100%;
+}
+
+.vertical-align-middle {
+	display: inline-block; 
+	vertical-align: middle;
+}
+
+.vertical-align-middle-pod0 {
+	display: inline-block; 
+	vertical-align: middle;
+	// width: 100%;
+}
+
+.vertical-align-bottom {
+	display: inline-block; 
+	vertical-align: bottom;
+	// width: 100%;
+	height: 100%
+}
+
+
+/* END OF VERTICAL ALIGN SPANS */
+
+
+/* END OF MODALS SECTION */
+
+
+
+/* CHECKBOXES SECTION */
+
+
+.checkbox {
+	display: inline-block;
+	float: left;
+	margin-top: 0rem;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+		margin-left-value: 0;
+		margin-left-ltr-source: physical;
+		margin-left-rtl-source: physical;
+}
+
+.label {
+    margin-bottom: 0;
+    font-weight: 100;
+}
+
+.checkbox-label {
+//    margin: 0;
+    font-weight: 100;
+    font-size: 1.4rem;
+}
+
+input[type="checkbox"] {
+    margin: 0px 0px 0px;
+    line-height: normal;
+}
+
+
+/*
+Checkboxes in inline forms are misaligned because for an unknown reason they inherit a height of 40px !
+This selector limits the height of inline checkboxes to 12px, which is the perfect value to align them to
+the other widgets in an inline form.
+*/
+.radio-inline, .checkbox-inline {
+    max-height: 1.2rem;
+}
+
+/* END OF CHECKBOXES SECTION */
+
+
+
+/* BUTTONS SECTION */
+
+
+.btn {
+	display: inline-block;
+//	margin-bottom: 0;
+	font-weight: 500;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid;
+//	border-color: #6f6f6f; 
+	white-space: nowrap;
+	padding: 0.6rem 1.2rem;
+		padding-top: 0.6rem;
+		padding-right-value: 1.4rem;
+		padding-bottom: 0.6rem;
+		padding-left-value: 1.4rem;
+		padding-left-ltr-source: physical;
+		padding-left-rtl-source: physical;
+		padding-right-ltr-source: physical;
+		padding-right-rtl-source: physical;
+	font-size: 1.4rem;
+	line-height: 1.5rem;
+	border-radius: 4px;
+	-moz-user-select: none;
+}
+
+.standard-button {
+	float: right;
+	margin: 0 0 0 1rem; 
+	min-width: 9rem;
+	max-width: 9rem;
+	background-color: #3C78C8; /* blue */
+}
+
+.btn-primary { 
+	background-color: #3C78C8; /* blue */
+	border-color: #6f6f6f; 
+	color: #FFF;
+}
+.btn-primary:hover { 
+	background-color: #08c654; /* green */
+	border: 1px solid #6f6f6f; 
+	border-color: #6f6f6f; 
+	color: #fff;
+}
+
+.btn-secondary { 
+	background-color: #3C78C8; /* blue */
+	border-color: #6f6f6f; 
+	color: #fff;
+}
+
+.btn-secondary:hover { 
+	background-color: #ffad33; /* #ffad33 is orange */
+	border: 1px solid #6f6f6f;
+	border-color: #6f6f6f; 
+	color: #fff;
+}
+
+.clear-button {
+	background-color: #DAEAF6; /* #DAEAF6 is light grayish blue */
+	border-color: #6f6f6f;
+	color: #6f6f6f;
+}
+
+.clear-button:hover { 
+	background-color: #ffad33; /* #ffad33 is orange */
+	border: 1px solid #6f6f6f;
+	border-color: #6f6f6f; 
+}
+
+.close-button {
+	background-color: #DAEAF6; /* #DAEAF6 is light grayish blue */
+	border-color: #6f6f6f;
+	color: #6f6f6f;
+}
+
+.close-button:hover { 
+	background-color: #959595; /* slightly less dark gray than #6f6f6f */
+	border: 1px solid #6f6f6f; 
+	border-color: #6f6f6f;
+}
+
+/* END OF BUTTONS SECTION */
+
+
+
+
+
+/* DIV TABLES */
+
+/* Instructs the browser to treat certain IDs in divs to behave like TABLES */
+
+/* IDs below are for the Login Modal "New Visitors" (or "Need Account") layout section */
+#login-nv-container {
+	display:table;
+	width:100%;
+	border-collapse: collapse;
+	}
+#login-nv-header-row {
+	display: table-row;
+	font-weight: bold;
+	background-color: #C91622;
+	text-align: center;
+	line-height: 2.5rem;
+	font-size: 1.4rem;
+	/* font-family: georgia; */
+	color: #fff;
+	}
+#login-nv-row {  
+	display: table-row;
+	font-size: 1.4rem;
+	}
+#login-nv-col { 
+	display:table-cell;
+	border: 0 solid #CCC;
+	}
+#login-nv-cell-1, #login-nv-cell-2, #login-nv-cell-3, #login-nv-cell-4, #login-nv-cell-5, #login-nv-cell-6, #login-nv-cell-7 {
+	display: table-cell;
+	text-align: left;
+	vertical-align: top;
+	}
+
+#login-nv-cell-loadbar { /* might want to delete this if not being used */
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	}
+
+
+
+/* IDs below are for the autoPayModal */
+#autopay-container {
+	display:table;
+	width:100%;
+	border-collapse: collapse;
+	}
+#autopay-header-row {
+	display: table-row;
+	font-weight: bold;
+	background-color: #C91622;
+	text-align: center;
+	line-height: 2.5rem;
+	font-size: 1.4rem;
+	/* font-family: georgia; */
+	color: #fff;
+	}
+#autopay-row {  
+	display: table-row;
+	font-size: 1.4rem;
+	}
+#autopay-col { 
+	display:table-cell;
+	border: 0 solid #CCC;
+	}
+#autopay-cell-1, #autopay-cell-2, #autopay-cell-3, #autopay-cell-4, #autopay-cell-5, #autopay-cell-6, #autopay-cell-7 {
+	display: table-cell;
+	text-align: left;
+	vertical-align: top;
+	}
+
+#autopay-cell-loadbar { /* might want to delete this if not being used */
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	}
+
+
+
+
+
+/* IDs below are for the Login Modal "Social Login" section */
+#login-sl-container {
+	display:table;
+	width:100%;
+	border-collapse: collapse;
+	}
+#login-sl-header-row {
+	display: table-row;
+	font-weight: bold;
+	background-color: #C91622;
+	text-align: center;
+	line-height: 2.5rem;
+	font-size: 1.4rem;
+	/* font-family: georgia; */
+	color: #fff;
+	}
+#login-sl-row {  
+	display: table-row;
+	font-size: 1.4rem;
+	}
+#login-sl-col { 
+	display:table-cell;
+	border: 0 solid #CCC;
+	}
+#login-sl-cell-1, #login-sl-cell-2, #login-sl-cell-3, #login-sl-cell-4, #login-sl-cell-5, #login-sl-cell-6, #login-sl-cell-7 {
+	display: table-cell;
+	text-align: left;
+	vertical-align: middle;
+	}
+
+/* IDs below are for the Login Modal "Remember Me" layout section */
+#login-rm-container {
+	display:table;
+	width:100%;
+	border-collapse: collapse;
+	}
+#login-rm-header-row {
+	display: table-row;
+	font-weight: bold;
+	background-color: #C91622;
+	text-align: center;
+	line-height: 2.5rem;
+	font-size: 1.4rem;
+	/* font-family: georgia; */
+	color: #fff;
+	}
+#login-rm-row {
+	display: table-row;
+	text-align: left;
+	}
+#login-rm-col {
+	display:table-cell;
+	border: 0 solid #CCC;
+	}
+#login-rm-cell-1, #login-rm-cell-2, #login-rm-cell-3, #login-rm-cell-4, #login-rm-cell-5, #login-rm-cell-6, #login-rm-cell-7 {
+	display: table-cell;
+	text-align: left;
+	vertical-align: top;
+	margin: 0;
+	}
+
+
+/* IDs below are for the Access (Buy) Modal purchase options section. Also (maybe) used by the autoPayModal and prePaidModal. */
+
+#access-container {
+	display:table;
+	width:100%;
+	// border-spacing: 1rem;
+	border-collapse: collapse; //separate
+	margin: 0;
+	}
+
+#access-header-row {
+	display: table-row;
+	font-weight: bold;
+	background-color: #C91622;
+	text-align: center;
+	line-height: 2.5rem;
+	font-size: 1.4rem;
+	// font-family: georgia;
+	color: #fff;
+	}
+
+#access-row {  
+	display: table-row;
+	width: 100%;
+	//	font-size: 1.4rem;
+	}
+
+#access-row-int {  
+	display: table-row;
+	width: 100%;
+	//	font-size: 1.4rem;
+	// margin: 8rem 0 8rem 0;
+	}
+
+#access-col { 
+	display:table-column;
+	border: 0 solid #CCC;
+	}
+
+#access-cell-3, #access-cell-4, #access-cell-5, #access-cell-6, #access-cell-7 {
+	display: table-cell;
+	text-align: right;
+	vertical-align: middle;
+	}
+
+#access-cell-1 {
+	display: table-cell;
+	text-align: right;
+	font-size: 1.6rem;
+	font-weight: 400;
+	width: 100%;
+	}
+
+#access-cell-1-center {
+	display: table-cell;
+	text-align: center;
+	font-size: 1.6rem;
+	font-weight: 400;
+	width: 100%;
+	}
+
+#access-cell-2 {
+	display: table-cell;
+	text-align: right;
+	vertical-align: middle;
+	padding: 0;
+	}
+	
+.access-row-sep { // give this class to a non-empty <p> tag between table rows
+	clear: both; 
+	line-height: 0.8rem;
+}
+
+
+/* IDs below are for generic Div Tables ("dt") */
+#dt-container {
+	display:table;
+	width:100%;
+	border-collapse: collapse;
+	}
+#dt-header-row {
+	display: table-row;
+	font-weight: bold;
+	background-color: ;
+	text-align: center;
+	line-height: 2.5rem;
+	font-size: 1.4rem;
+	/* font-family: ; */
+	color: #fff;
+	}
+#dt-row {  
+	display: table-row;
+	width: ;
+	font-size: 1.4rem;
+	}
+#dt-col { 
+	display:table-column;
+	border: 0 solid #CCC;
+	}
+#dt-cell-1, #dt-cell-2, #dt-cell-3, #buy-cell-4, #buy-cell-5, #buy-cell-6, #buy-cell-7 {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	}
+
+/* END OF DIV TABLES SECTION */
+
+
+
+/* AUTO RESIZING OF IMAGES */
+
+	.resize-logo-modal-header {
+		max-height: 2.3rem;
+		max-width: 23rem;
+		// height: 100%;
+		width: auto;
+		padding: 1px;
+}
+
+
+	.resize-glyder-icon-footer {
+		max-height: 1.5rem;
+		max-width: 1.5rem;
+		// height: 100%;
+		width: auto;
+}
+
+	.resize-social-icon {
+		max-height: 2.4rem;
+		max-width: 2.4rem;
+		height: 100%;
+		width: auto;
+}
+
+	.img-responsive {  
+		display: block;  
+		height: auto;  
+		max-width: 100%;  
+}  
+
+
+/* MISC SECTION */
+
+.align-right {
+	text-align: right;
+	white-space: nowrap;
+}
+
+
+.form-group {
+    margin-bottom: -3rem;
+}
+
+.nomargin {
+	margin: 0;
+}
+
+.gray-outline {
+	outline: 1px solid lightgray;
+}
+
+.gray-background {
+	background-color: #F1F1F1;
+	outline: 1px solid lightgray;
+}
+
+/* END OF MISC SECTION */
+
+
+
+/* PODS SECTION */
+/* This is a shaded box around content to use with div, for example <div id="pod" style="background-color:#FFFFFF;"> </div> */
+
+.pod { 
+    -khtml-border-radius: 5px;    /* for the rounded corners */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 0 gray; /* for the drop shadow */
+    background-color: #DAEAF6;
+    line-height: ;
+    margin: 0;
+}
+
+.pod-white { 
+    -khtml-border-radius: 5px;    /* for the rounded corners */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 0 gray; /* for the drop shadow */
+    background-color: white;
+    line-height: ;
+    margin: 0;
+}
+
+
+.podrr { /* for use with primary pod at top of modal body */
+	-khtml-border-radius: 5px;    /* for the rounded corners */
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.podfr { /* for use with primary pod at top of modal body */
+	-khtml-border-radius: 0 0 5px 5px;    /* for the rounded corners */
+	-moz-border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+}
+
+.podrf { /* for use with primary pod at top of modal body */
+	-khtml-border-radius: 5px 5px 0 0;    /* for the rounded corners */
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;
+}
+
+/* ORIGINAL POD0
+.pod0 { 
+	-webkit-box-shadow: 0 0 0 gray; 
+	line-height: ;
+	margin: 0;
+	padding: 0.2rem 1.1rem;
+	background-color: #98C4E6;
+	border: 0px solid #959595;
+	color: black; 
+}
+*/
+
+.pod0 { /* provides gradient from dark to light */
+	-webkit-box-shadow: 0 0 0 gray; /* for the drop shadow */
+	line-height: ;
+	margin: 0;
+	padding: 0.2rem 1.1rem;
+	/* background-color: #98C4E6; NOT USING IF USING GRADIENT BELOW */
+	border: 0px solid #959595;
+	color: black; /* #fff  */
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0.1, #98C4E6),
+		color-stop(0.69, #DAEAF6) );
+	background-image: -o-linear-gradient(bottom, #98C4E6 10%, #DAEAF6 69%);
+	background-image: -moz-linear-gradient(bottom, #98C4E6 10%, #DAEAF6 69%);
+	background-image: -webkit-linear-gradient(bottom, #98C4E6 10%, #DAEAF6 69%);
+	background-image: -ms-linear-gradient(bottom, #98C4E6 10%, #DAEAF6 69%);
+	background-image: linear-gradient(to bottom, #98C4E6 10%, #DAEAF6 69%); 
+}
+
+.pod0-2 { /* has a gradient */
+	-webkit-box-shadow: 0 0 0 gray; /* for the drop shadow */
+	line-height: ;
+	margin: 0.75rem 0 0 0;  
+	padding: 0.2rem 1.1rem;
+	/* background-color: #98C4E6; NOT USING IF USING GRADIENT BELOW */
+	border: 0px solid #959595;
+	color: black; /* #fff  */
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0.1, #98C4E6),
+		color-stop(0.69, #DAEAF6) );
+	background-image: -o-linear-gradient(bottom, #98C4E6 10%, #DAEAF6 69%);
+	background-image: -moz-linear-gradient(bottom, #98C4E6 10%, #DAEAF6 69%);
+	background-image: -webkit-linear-gradient(bottom, #98C4E6 10%, #DAEAF6 69%);
+	background-image: -ms-linear-gradient(bottom, #98C4E6 10%, #DAEAF6 69%);
+	background-image: linear-gradient(to bottom, #98C4E6 10%, #DAEAF6 69%); 
+}
+
+.pod0-2-no-gradient { /* no gradient version */
+	-webkit-box-shadow: 0 0 0 gray; /* for the drop shadow */
+	line-height: ;
+	margin: 0.75rem 0 0 0;  
+	padding: 0.2rem 1.1rem;
+	background-color: #DAEAF6;
+	border: 0px solid #959595;
+	color: black; /* #fff  */
+}
+
+.pod0-2-white { /* no gradient version */
+	-webkit-box-shadow: 0 0 0 gray; /* for the drop shadow */
+	line-height: ;
+	margin: 0.75rem 0 0 0;  
+	padding: 0.2rem 1.1rem;
+	background-color: white;
+	border: 0px solid #959595;
+	color: black; /* #fff  */
+}
+
+.pod0-center {
+	text-align: center;
+}
+
+.text-pod0 {
+	display: inline-block; 
+	vertical-align: middle;
+	// width: 100%;
+	font-size: 1.5rem; 
+	font-weight: 700; 
+	text-align: left;
+}
+
+.text-pod-intro {
+	display: inline-block; 
+	vertical-align: middle;
+	width: 100%; // Previously commented this out because it may have caused problems with the centering of the overall modal on smaller screen sizes. Seems to be working okay now.
+	font-size: 1.6rem; 
+	font-weight: 400; 
+	text-align: center;
+}
+
+
+/* Original POD1
+.pod1 {
+	-webkit-box-shadow: 0 0 0 gray;
+	background-color: #DAEAF6;
+	line-height: ;
+	margin: 0;
+	padding: 1.1rem;
+	border: 0px solid #959595;
+	// color: #fff;
+}
+*/
+
+.pod1 {
+	-webkit-box-shadow: 0 0 0 gray; /* for the drop shadow */
+	background-color: #DAEAF6;
+	line-height: ;
+	margin: 0;
+	padding: 1.1rem;
+	border: 0px solid #959595;
+	// color: #fff;
+}
+
+.pod1-white {
+	-webkit-box-shadow: 0 0 0 gray; /* for the drop shadow */
+	background-color: white;
+	line-height: ;
+	margin: 0;
+	padding: 1.1rem;
+	border: 0px solid #959595;
+	// color: #fff;
+}
+
+.pod2 {
+	-webkit-box-shadow: 0 0 0 gray; /* for the drop shadow */
+	background-color: #DAEAF6;
+	line-height: ;
+	margin: 0.75rem 0 0 0;  
+	padding: 1.1rem;
+	border: 0px solid #959595;
+	// color: #fff;
+}
+
+.pod2-white {
+	-webkit-box-shadow: 0 0 0 gray; /* for the drop shadow */
+	background-color: white;
+	line-height: ;
+	margin: 0.75rem 0 0 0;  
+	padding: 1.1rem;
+	border: 0px solid #959595;
+	// color: #fff;
+}
+
+.brdr {
+	border-style: solid;
+	border-color: #98C4E6;
+} 
+
+.brdr-r {
+	border-right-width: 1px;
+}
+
+.brdr-l {
+	border-left-width: 1px;
+}
+
+.brdr-b {
+	border-bottom-width: 1px;
+}
+
+.brdr-t {
+	border-top-width: 1px;
+}
+
+.brdr-all {
+	border-width: 1px;
+}
+
+
+
+
+/* END OF PODS SECTION */
+
+
+/* TEXTBTN SECTION
+	STYLE A TEXT LINK TO LOOK LIKE A BUTTON 
+	Example: <a class="textbtn" href="#">Testing the textbtn formatting.</a>
+*/
+
+.textbtn {
+}
+
+a.textbtn, a.textbtn:link, a.textbtn:visited {
+	font-size: 1.4rem;
+	vertical-align: center;
+	display: inline-block;
+	// color: #aeaeae;
+	background-color: transparent;
+	font-weight: 100;
+	// font-size: 1.2rem;
+	text-align: center;
+	padding: 1px 1px;
+	text-decoration: none;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0.5rem;
+	border: 1px solid #aeaeae;
+	border-radius: 4px;
+	white-space: nowrap;
+	width: 9rem;
+	min-width: 9rem;
+	max-width: 9rem;
+}
+
+a.textbtn:hover {
+	cursor: pointer;
+	// display: inline-block;
+	color: #959595;
+	background-color: #8AC007
+	font-weight: 100; // bold;
+	// font-size: 1.2rem;
+	text-align: center;
+	padding: .3rem 1rem .3rem;
+	text-decoration: none;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: .5rem;
+	border: 1px solid #959595;
+	border-radius: 4px;
+	white-space: nowrap;
+}
+/*  END OF TEXTBTN SECTION */
+
+
+/* media query for most mobile devices */
+@media only screen and (min-width: 0px) and (max-width: 48rem){
+
+	.overlay-content {
+		width: 96%;
+		margin: 0 2%;
+		left: 0;  /* originally was set to "0;" */
+	}
+}
+
+
+/* PROGRESS BAR STUFF */
+
+	.progress-bar-div {
+		text-align: center;
+}
+
+	.resize-progress-bar-img {
+		height: 1.25rem;
+		width: 100%;
+}
+
+
+/* CSS fix (temporary?) for the way main html page jumps to the right when a modal opens. Known as a bug within Bootstrap. */
+
+body {
+overflow-y: scroll;
+}
+
+body.modal-open {
+overflow-y: scroll;
+margin: 0;
+}
+
+.modal {
+overflow: auto;
+}
+
+
+/* START STOPLIGHTS SECTION  */
+
+/* Stoplight pod */ 
+
+.pod-stoplight { /* This is a shaded box around content to use with div, for example <div id="pod" style="background-color:#FFFFFF;"> </div> */
+    -khtml-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 0px gray; /* for the drop shadow */
+    background-color: #bbbbbb; /* #DAEAF6 is light grayish blue */
+    // line-height: ;
+    margin: 0;
+    padding: 0;
+    border: 1px solid;
+    border-color: gray;
+    display: inline-block;
+}
+
+
+/* Stoplight base circle sizes */
+
+.stoplight {
+	border-radius: 50%;
+	width: 2.5rem;
+	height: 2.5rem; 
+	/* width and height can be anything, as long as they're equal */
+	display: inline-block;
+	vertical-align: top;
+}
+
+
+/* Static pale stoplight colors and margins */
+
+.pale-red {
+	background: #cecece;
+	background-color: #cecece;
+	margin: .8rem .4rem .8rem 1rem;
+}
+
+.pale-yellow {
+	background: #cecece;
+	background-color: #cecece;
+	margin: .8rem .4rem;
+}
+
+.pale-green {
+	background: #cecece;
+	background-color: #cecece;
+	margin: .8rem 1rem .8rem .4rem;
+}
+
+/* Stoplight animation blocks */
+@keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+@-moz-keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+@-ms-keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+@-o-keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+
+/* Set the animation speed etc */
+.spin-speed {
+	animation:				spin 1.5s infinite linear;
+	animation-name: 		spin; 
+	animation-duration: 	1.5s;
+	animation-iteration-count: 	infinite; 
+	animation-timing-function: 	linear;
+	-webkit-animation:	spin 1.5s infinite linear;
+	-moz-animation:		spin 1.5s infinite linear;
+	-ms-animation:			spin 1.5s infinite linear;
+	-o-animation:			spin 1.5s infinite linear;
+}
+
+/* Stoplight spinning gradients, colors, and margins */
+.spin-Red {
+	background-image: -moz-radial-gradient(3rem 3rem 45deg, circle cover, orange 1%, orange 10%, red 100%);
+	background-image: -webkit-radial-gradient(3rem 45px, circle cover, orange, red);
+	background-image: radial-gradient(3rem 3rem 45deg, circle cover, yellow 5%, orange 5%, red 100%);
+	margin: .8rem .4rem .8rem 1rem;
+}
+
+.spin-Yellow {
+	background-image: -moz-radial-gradient(3rem 3rem 45deg, circle cover, yellow 0%, orange 100%, red 95%);
+	background-image: -webkit-radial-gradient(3rem 45px, circle cover, yellow, orange);
+	background-image: radial-gradient(3rem 3rem 45deg, circle cover, yellow 5%, orange 100%, red 100%);
+	margin: .8rem .4rem .8rem .4rem;
+}
+
+.spin-Green {
+	background: #08c654; /* Old browsers */
+	background-image: -moz-radial-gradient(3rem 3rem 45deg, circle cover, #66ff00 0%, #08c654 100%); /* FF3.6+ */
+	background: -webkit-gradient(3rem 45px, radial, center center, 0px, center center, 100%, color-stop(0%,#66ff00), color-stop(100%,#08c654)); /* Chrome, Safari4+ */
+	background-image: -webkit-radial-gradient(3rem 45px, circle cover, #66ff00, #08c654); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(3rem 45deg, center, circle cover,  #66ff00 0%,#08c654 100%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, circle cover, #66ff00 0%, #08c654 100%); /* IE10+ */
+	background: radial-gradient(3rem 3rem 45deg, ellipse at center, #66ff00 0%, #08c654 100%); /* W3C */
+	background-image: radial-gradient(3rem 3rem 45deg, circle cover, #66ff00 0%, #08c654 100%); /* W3C */
+	margin: .8rem 1rem .8rem .4rem;
+}
+
+
+/* END OF STOPLIGHTS SECTION */
+
+.lock-icon { /* apply to img tag for lock icons */
+	margin-right: 0.7rem;
+	margin-top: -.7rem;
+}
