@@ -39,6 +39,9 @@ $('#div_daypass_cost').html('$' + Number(glyder_day_pass_cost).toFixed(2));
 function glyder_check_redirect_newtab(vendor_id, item_id) {
 	show_external_link_from_catalog = true;
 	// read the external link
+	localStorage.setItem("current_vendor_id", vendor_id);
+	localStorage.setItem("current_item_id", item_id);
+	localStorage.setItem("current_item_href", 'dummy');
 	glyderReadItemData(function() {
 		glyder_check(vendor_id, item_id, glyder_item_redirect_link);
 	});
