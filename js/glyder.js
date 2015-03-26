@@ -7,9 +7,18 @@ var glyder_item_redirect_link = "";
 var glyder_item_type = "";
 var glyder_item_description = "";
 
+var show_external_link_from_catalog = false; // 3/26 added for seattle time external links scenario 
+
 // MOVE THESE TWO FUNCTION TO cpModal for vendor specific code
 var glyder_day_pass_cost = 1.15;
 function glyder_vendor_page_redirect(vendor_id, item_id, item_href) {
+	if (show_external_link_from_catalog) {
+		show_external_link_from_catalog = false;
+		console.log('open ' + item_href + ' in a new tab.');
+		window.open(item_href, '_blank');
+		return;
+	}
+
 	if (!jQuery.isEmptyObject(top.frames["demoframe"])) {
 		top.frames["demoframe"].location = item_href;
 	} else {
@@ -26,6 +35,14 @@ function glyder_vendor_page_show(vendor_id, item_id) {
 loadModals();
 
 $('#div_daypass_cost').html('$' + Number(glyder_day_pass_cost).toFixed(2));
+
+function glyder_check_redirect_newtab(vendor_id, item_id) {
+	show_external_link_from_catalog = true;
+	// read the external link
+	glyderReadItemData(function() {
+		glyder_check(vendor_id, item_id, glyder_item_redirect_link);
+	});
+}
 
 function glyder_check(vendor_id, item_id, item_href) {
 	var user_id;
